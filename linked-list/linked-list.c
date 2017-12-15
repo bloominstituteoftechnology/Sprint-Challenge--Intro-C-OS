@@ -26,24 +26,17 @@ void printList() {
 }
 
 void new_node(int key, int data) {
-   //create a link
    struct node *link = (struct node*) malloc(sizeof(struct node));
-	
-   link->key = key;
-   link->data = data;
-	
-   //point it to old first node
-   link->next = head;
-	
-   //point first to new first node
-   head = link;
+    link->key = key;
+    link->data = data;
+    link->next = head;
+    head = link;
 }
 
 // append_node()
 
 struct node* append_node(int key, int newdata) {
 
-   //start from the first link
    struct node* current = head;
 
    //if list is empty
@@ -51,18 +44,14 @@ struct node* append_node(int key, int newdata) {
       return NULL;
    }
 
-   //navigate through list
    while(current->key != key) {
 	
-      //if it is last node
       if(current->next == NULL) {
          return NULL;
       } else {
-         //go to next link
          current = current->next;
       }
    }      
-   //if data found, return the current Link
    printf("Found: (id:%d, data:%d) \n\n",current->key,current->data);
    current->data = newdata;
     printf("Appended: (id:%d, data:%d) \n\n",current->key,current->data);
