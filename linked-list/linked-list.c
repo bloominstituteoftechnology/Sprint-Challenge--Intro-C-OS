@@ -1,3 +1,7 @@
+// to start I coded and re-coded everything 5 times as a goal while replaying explanations along with.
+// then I kept going on that loop until I lost count and am burned out for this session
+// its hard to balance correctly, need more hours coding and practicing but at the same time "don't overload" is important
+
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -83,6 +87,6 @@ int main(void) {
         printf("%d\n", p->val);
         p = p->next;
     }
-    
+
     return 0;
 }
