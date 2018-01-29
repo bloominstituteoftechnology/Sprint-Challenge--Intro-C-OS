@@ -7,8 +7,6 @@ Complete both.
 Describe what would be necessary to write software if no operating
 system was in place.
 
-(Recommend making this a blog entry that you store at the location of
-your choice. Barring, that, enter markdown in `challenge1.md`.)
 
 ## Challenge 2
 
