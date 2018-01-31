@@ -114,6 +114,9 @@ $ ./lsls
 
 ### Stretch Goal: Mark Directories
 
+Instead of a size in bytes for a directory, replace the number with
+the string `<DIR>`.
+
 The `st_mode` field in the `struct stat` buffer holds information
 about the file permissions and type of file.
 
