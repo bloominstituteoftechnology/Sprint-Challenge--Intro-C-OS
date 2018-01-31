@@ -11,8 +11,8 @@ directory. It should print `Testing: PASS`.
 
 ## Challenge 1
 
-Describe what would be necessary to write software if no operating
-system was in place.
+What are some of the tasks that a general operating system is responsible for handling?
+Describe in as much detail as you can _how_ these tasks are handled by the operating system. 
 
 
 ## Challenge 2
