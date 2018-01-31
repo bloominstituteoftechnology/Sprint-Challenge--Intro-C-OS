@@ -84,6 +84,17 @@ For output, you should print the field `d_name`.
 
 Modify the program to print out the file size in bytes as well as the name.
 
+Example output (suggestion: use `%10lld` to print the size in a
+field of width 10):
+
+```
+$ ./lsls
+    224  .
+    992  ..
+   1722  lsls.c
+   8952  lsls
+```
+
 You'll need to use the `stat()` call in `<sys/stat.h>`.
 
 * `int stat(char *fullpath, struct stat *buf)`: For a given full path to a file
@@ -101,31 +112,10 @@ You'll need to use the `stat()` call in `<sys/stat.h>`.
   printf("file size is %lld\n", buf.st_size);
   ```
 
-Example output (suggestion: use `%10lld` to print the size in a
-field of width 10):
-
-```
-$ ./lsls
-    224  .
-    992  ..
-   1722  lsls.c
-   8952  lsls
-```
-
 ### Stretch Goal: Mark Directories
 
 Instead of a size in bytes for a directory, replace the number with
 the string `<DIR>`.
-
-The `st_mode` field in the `struct stat` buffer holds information
-about the file permissions and type of file.
-
-If you bitwise-AND the value with `S_IFDIR` and get a non-zero
-result, the file is a directory.
-
-(If you bitwise-AND the value with `S_IFREG` and get a non-zero
-result, the file is a regular file, as opposed to a device node,
-symbolic link, hard link, directory, named pipe, etc.)
 
 Example output:
 
@@ -136,3 +126,13 @@ $ ./lsls
       1717  lsls.c
       8952  lsls
 ```
+
+The `st_mode` field in the `struct stat` buffer holds information
+about the file permissions and type of file.
+
+If you bitwise-AND the value with `S_IFDIR` and get a non-zero
+result, the file is a directory.
+
+(If you bitwise-AND the value with `S_IFREG` and get a non-zero
+result, the file is a regular file, as opposed to a device node,
+symbolic link, hard link, directory, named pipe, etc.)
