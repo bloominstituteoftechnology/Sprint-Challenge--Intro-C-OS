@@ -9,10 +9,10 @@ char *getcwd(char *buf, size_t size);
  */
 int main(int argc, char **argv)
 {
-  struct stat *file_stats;
-  DIR *pDir;
   struct dirent *pDirent;
+  DIR *pDir;
   char cwd[1024];
+  struct stat fileStat;
 
   if (argc < 2)
   {
@@ -22,6 +22,14 @@ int main(int argc, char **argv)
       while ((pDirent = readdir(pDir)) != NULL)
       {
         printf("[%s]\n", pDirent->d_name);
+        if (!stat(pDirent->d_name, &fileStat))
+        {
+          printf("\t\t%ld bytes\n", fileStat.st_size);
+        }
+        else
+        {
+          printf("(size unavailable for this file)\n");
+        }
       }
       closedir(pDir);
       return 0;
@@ -43,9 +51,9 @@ int main(int argc, char **argv)
     if (pDirent)
     {
       printf("%s -- ", pDirent->d_name);
-      if (!stat(pDirent->d_name, file_stats))
+      if (!stat(pDirent->d_name, &fileStat))
       {
-        printf("%u bytes\n", (unsigned int)file_stats.st_size);
+        printf("\t\t%ld bytes\n", fileStat.st_size);
       }
       else
       {
