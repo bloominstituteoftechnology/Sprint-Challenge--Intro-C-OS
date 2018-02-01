@@ -13,8 +13,27 @@ directory. It should print `Testing: PASS`.
 
 What are some of the tasks that a general operating system is responsible for handling?
 
+*General operating systems are designed to manage the computer hardware and software resources.  Some of the tasks the genreal operating system does is managing communications between software and hardware, allocation of computer memory and allocation of CPU time*
+
 Describe in as much detail as you can _how_ these tasks are handled by the operating system. 
 
+*To elaborate on the tasks handled by the operating system listed above, please see below*
+  
+  1. Managing communications between software and hardware - 
+      
+      *i. Loading and saving data and programs*
+
+      *ii. Communicating with hardwares such as mouse and printer*
+
+      *iii. Displaying information in output form.*
+
+  2. Allocation of computer memory - 
+      
+      *The Computer memory must be allocated across different tasks that is to be performed at any time.  Using a spreadsheet program as an example, memory would be required to open the software, to open a new spreadsheet document to be edited as well as to be shown on the monitor* 
+
+  3. Allocation of CPU time - 
+
+      *On most computers, there is only one microprocessor in the Central Processing Unit (CPU).  How it works is that it can only process one piece of data at one time.  With the task required to keep the operating system running, the time required from the CPU is divided and being carried out.  For example, moving the mouse cursor across the screen, opening a word document from a folder and keeping the monitor updated to show the actions being done by the user/computer*
 
 ## Challenge 2
 
