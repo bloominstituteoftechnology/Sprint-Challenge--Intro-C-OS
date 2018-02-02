@@ -11,9 +11,11 @@ directory. It should print `Testing: PASS`.
 
 ## Challenge 1
 
-What are some of the tasks that a general operating system is responsible for handling?
+What are some of the tasks that a general operating system is responsible for handling? 
+   The general OS is responsible for handling processes timing and memory usage. As well as all communications between all programs and periferals. 
 
-Describe in as much detail as you can _how_ these tasks are handled by the operating system. 
+Describe in as much detail as you can _how_ these tasks are handled by the operating system.
+  The OS has a highly evolved architecture of methods to orchestrate process. 
 
 
 ## Challenge 2
