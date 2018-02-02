@@ -19,7 +19,7 @@ directory. It should print `Testing: PASS`.
 - Handling interrupts without losing progress in other active processes
 
 ### Describe in as much detail as you can _how_ these tasks are handled by the operating system. 
-I think the key concept here is probably processes and scheduling/threading. The OS manages those processes and prevents them from accessing data they're not supposed to have access to. Memory management plays a big role in this -- the OS needs to be able to keep track of the data and call stack associated with each process, and 
+I think the key concept here is probably processes and scheduling/threading. The OS manages those processes and prevents them from accessing data they're not supposed to have access to. Memory management plays a big role in this -- the OS needs to be able to keep track of the data and call stack associated with each process, and it will read/write this information many times a second.
 
 ## Challenge 2
 
