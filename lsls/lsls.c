@@ -19,7 +19,9 @@ int main(int argc, char **argv)
 
   // Open directory
     struct dirent *de;
+    struct stat st;
     DIR *dr = opendir(".");
+    // long int size=0;
  
     if (dr == NULL)  // opendir returns NULL if couldn't open directory
     {
@@ -33,7 +35,7 @@ int main(int argc, char **argv)
     };
 
     while ((de = readdir(dr)) != NULL)
-            printf("%s\n", de->d_name);
+            printf("%s %10lld\n", de->d_name, &st);
   // Close directory
     closedir(dr);
   return 0;
