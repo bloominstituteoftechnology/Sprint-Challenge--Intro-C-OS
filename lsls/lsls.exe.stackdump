@@ -1,0 +1,7 @@
+Exception: STATUS_ACCESS_VIOLATION at eip=611478C0
+eax=0061CA64 ebx=00000001 ecx=00000001 edx=00000001 esi=0061D51C edi=611478A0
+ebp=6119F8C0 esp=0061C9AC program=C:\users\Gary Dillard\desktop\Sprint-Challenge--Intro-C-OS\lsls\lsls.exe, pid 11096, thread main
+cs=0023 ds=002B es=002B fs=0053 gs=002B ss=002B
+Stack trace:
+Frame     Function  Args
+End of stack trace
