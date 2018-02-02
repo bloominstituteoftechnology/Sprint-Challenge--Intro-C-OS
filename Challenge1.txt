@@ -1,0 +1,5 @@
+What are some of the tasks that a general operating system is responsible for handling?
+  Managing hardware resources
+  Handling Interrupts
+  Sharing input output between CPU and other components
+  Provides a consistent API
