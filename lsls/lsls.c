@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <dirent.h>
+#include <sys/stat.h>
 
 /**
  * Main
@@ -22,16 +23,21 @@ int main(int argc, char **argv)
     //     printf("Already in /lsls directory\n");
     //     return 0;
     // }
-    directory = opendir(argv[1]);
+    directory = opendir(".");
     if (directory == NULL) {
         printf("Cannot open directory '%s'\n", argv[1]);
         return 0;
     }
 
   // Repeatly read and print entries
-    while ((pDirent = readdir(directory)) != NULL) {
-        printf("[%s]\n", pDirent->d_name);
+  struct stat buf;
+  printf("file size is %lld\n", buf.st_size);
+
+  while ((pDirent = readdir(directory)) != NULL) {
+        stat(*argv, &buf);
+        printf("[%10lld] [%s]\n", buf.st_size, pDirent->d_name);
     }
+
 
   // Close directory
         closedir(directory);
