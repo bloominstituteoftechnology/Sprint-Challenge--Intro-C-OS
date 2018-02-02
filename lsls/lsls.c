@@ -1,40 +1,45 @@
 #include <stdio.h>
-#include <dirent.h>
+#include <dirent.h> // directory entries
 
 /**
  * Main
  */
 
-// this parses the number of args passed in:
-// lsls.exe returns "The 0 arg is: lsls.exe"
-// lsls.exe . returns "The 0 arg is: lsls.exe \ The 1 arg is: ."
 // argc is arg counter, argv is arg value
-//int main(int argc, char **argv)
-int main(void)
-// {
+int main(int argc, char **argv)
+{
+  // directory_name is limited to 10
+  char directory_name[10];
 
-//   for (int i = 0; i < argc; i++) {
-//     printf("The %2d arg is: %s\n", i, argv[i]);
-//   }
+  // DIR pointer
+  DIR *ptr;
 
-struct dirent *de;
-DIR *dr = opendir(".");
+  // structure directory entry points to directory
+  struct dirent *directory;
+  
+  // tell me where to look
+  printf("Please enter a directory name: \t");
+  
+  // string will be provided, it is the directory name
+  scanf("%s", directory_name);
 
-if (dr == NULL) {
-  printf("Could not open current directory");
-  return 0;
-}
-while ((de = readdir(dr)) != NULL)
-  printf("%s\n", de->d_name);
-  closedir(dr);
+  // pointer is now the open directory of the provided name
+  ptr = opendir(directory_name);
 
-  // Parse command line
+  // show me the information
+  printf("\nDirectory %s\n", directory_name);
 
-  // Open directory
+  // while the pointer does not point to null (end of directory listing)
+  while((directory = readdir(ptr)) != NULL)
+  {
 
-  // Repeatly read and print entries
+    // print the directory names
+    printf("%s\n", directory->d_name);
+  }
 
-  // Close directory
-
+  // close the directory
+  closedir(ptr);
+  
+  // success
   return 0;
 }
