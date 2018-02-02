@@ -19,7 +19,7 @@ int main(int argc, char *argv[]) {
     }
 
     while ((directoryEntry = readdir(directoryName)) != NULL) {
-            int * nameRef = directoryEntry->d_name;
+            char * nameRef = directoryEntry->d_name;
             stat(nameRef, &buf);
             int * nameSize = buf.st_size;
 
