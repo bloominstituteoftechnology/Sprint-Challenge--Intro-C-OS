@@ -12,7 +12,7 @@ int main(int argc, char **argv)
   struct dirent *pDirent;
   DIR *pDir;
   char cwd[1024];
-  struct stat fileStat;
+  struct stat statBuf;
 
   if (argc < 2)
   {
@@ -22,9 +22,9 @@ int main(int argc, char **argv)
       while ((pDirent = readdir(pDir)) != NULL)
       {
         printf("[%s]\n", pDirent->d_name);
-        if (!stat(pDirent->d_name, &fileStat))
+        if (!stat(pDirent->d_name, &statBuf))
         {
-          printf("\t\t%ld bytes\n", fileStat.st_size);
+          printf("\t\t%ld bytes\n", statBuf.st_size);
         }
         else
         {
@@ -51,9 +51,9 @@ int main(int argc, char **argv)
     if (pDirent)
     {
       printf("%s -- ", pDirent->d_name);
-      if (!stat(pDirent->d_name, &fileStat))
+      if (!stat(pDirent->d_name, &statBuf))
       {
-        printf("\t\t%ld bytes\n", fileStat.st_size);
+        printf("\t\t%ld bytes\n", statBuf.st_size);
       }
       else
       {
