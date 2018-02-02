@@ -11,10 +11,15 @@ directory. It should print `Testing: PASS`.
 
 ## Challenge 1
 
-What are some of the tasks that a general operating system is responsible for handling?
+### What are some of the tasks that a general operating system is responsible for handling?
+- Spawning/running/threading/managing processes
+- Supporting/enabling communication between programs and hardware (using drivers)
+- Managing and monitoring system resources, such as data allocation and hardware access
+- Assigning priority for different processes and determining which process will run next
+- Handling interrupts without losing progress in other active processes
 
-Describe in as much detail as you can _how_ these tasks are handled by the operating system. 
-
+### Describe in as much detail as you can _how_ these tasks are handled by the operating system. 
+I think the key concept here is probably processes and scheduling/threading. The OS manages those processes and prevents them from accessing data they're not supposed to have access to. Memory management plays a big role in this -- the OS needs to be able to keep track of the data and call stack associated with each process, and it will read/write this information many times a second.
 
 ## Challenge 2
 
