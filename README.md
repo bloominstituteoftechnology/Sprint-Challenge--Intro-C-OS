@@ -105,12 +105,6 @@ You'll need to use the `stat()` call in `<sys/stat.h>`.
 
   ```c
   // Example stat() usage
-
-  struct stat buf;
-
-  stat("./lsls.c", &buf);
-
-  printf("file size is %lld\n", buf.st_size);
   ```
 
 ### Stretch Goal: Mark Directories
