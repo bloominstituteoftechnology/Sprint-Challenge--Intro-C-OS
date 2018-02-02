@@ -12,9 +12,16 @@ directory. It should print `Testing: PASS`.
 ## Challenge 1
 
 What are some of the tasks that a general operating system is responsible for handling?
+User I/O including screen, keyboard, mouse, touch, gestures, and others.
+I/O to devices through drivers including wired and wire-less connection hardware.
+Process scheduling.
+Security protection of the kernal. 
 
 Describe in as much detail as you can _how_ these tasks are handled by the operating system. 
 
+Linux devices appear as files.  Most devices can be classified as char module, block module, or network module and conform to standard APIs.  Good device drivers expose capabilites without specifying policy, leaving that to the user.
+From Dabian through Ubunto Linux Mint inherits the Completely Fair Scheduler (CFS).  CFS scedules a process for execution by selectling the left-most process in a red-black tree of processes waiting for execution expressed as sched_entity structures.   Long running processes are paused, descheduled, and reinserted into the red-black tree when they excede their maximum execution time.
+From Ubuntu Linux Mint inherits Mandatory Access control (MAC) implimented by AppArmor.   AppArmor uses Linux Security Modules (LSM) to expose an Access Control api to the kernal.
 
 ## Challenge 2
 
