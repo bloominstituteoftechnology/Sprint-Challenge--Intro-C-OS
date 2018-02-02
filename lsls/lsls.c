@@ -6,13 +6,33 @@
  */
 int main(int argc, char **argv)
 {
-  // Parse command line
+  int i;
 
-  // Open directory
+  struct dirent *tDirent;
 
-  // Repeatly read and print entries
+  DIR *tDir;
 
-  // Close directory
+  if (argc < 2) {
+    tDir = opendir(".");
+    if (tDir == NULL) {
+      printf("Cannot open directory \n");
+    }
+    while ((tDirent = readdir(tDir)) != NULL) {
+      printf ("[%s]\n", tDirent->d_name);
+    }
+    closedir (tDir); 
+  } else {
+    for (i = 1; i < argc; i++) {
+      tDir = opendir(argv[i]);
+      if (tDir == NULL) {
+        printf("Cannot open directory %s\n", argv[i]);
+      }
+      while ((tDirent = readdir(tDir)) != NULL) {
+        printf ("[%s]\n", tDirent->d_name);
+      }
+      closedir (tDir);
+    }
+  }
 
   return 0;
 }
