@@ -32,7 +32,7 @@ int main(int argc, char **argv)
         // printf("Could not open current directory" );
         dr = opendir(".");
     }
-    // for readdir()
+
     while ((de = readdir(dr)) != NULL) {
             printf("%s\n", de->d_name);
     }
