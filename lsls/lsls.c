@@ -31,11 +31,11 @@ int main(int argc, char **argv)
 
   // Repeatly read and print entries
   struct stat buf;
-  printf("file size is %lld\n", buf.st_size);
+  printf("directory size is %lld\n", buf.st_size);
 
   while ((pDirent = readdir(directory)) != NULL) {
-        stat(*argv, &buf);
-        printf("[%10lld] [%s]\n", buf.st_size, pDirent->d_name);
+        stat(pDirent->d_name, &buf);
+        printf("%10lld [%s]\n", buf.st_size, pDirent->d_name);
     }
 
 
