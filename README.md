@@ -12,9 +12,14 @@ directory. It should print `Testing: PASS`.
 ## Challenge 1
 
 What are some of the tasks that a general operating system is responsible for handling?
-
+- Scheduling applications
+- Managing Resources
 Describe in as much detail as you can _how_ these tasks are handled by the operating system. 
 
+The operating system splits up resources like hardware(CPU, ram, etc), peripherals and schedules them so each
+required operation functions properly through a consistent abstraction so applications running do not have to manage
+the lower level complexity. This allows GUI's, background process, and userland applications to be running "at the same time"
+and the OS handles the scheduling so each applicaiton looks like it's running concurrently on the cpu.
 
 ## Challenge 2
 
