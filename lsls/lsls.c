@@ -4,15 +4,21 @@
 /**
  * Main
  */
-int main(int argc, char **argv)
+int main()
 {
-  // Parse command line
+  DIR *d; //creating a directory type called d
+  struct dirent *dir; //initializing a struct
+  d = opendir("."); //opening curret directory
 
-  // Open directory
-
-  // Repeatly read and print entries
-
-  // Close directory
+  if (d)
+  {
+    while ((dir = readdir(d)) != NULL)
+    //while the dir doesn't equal null keep reading
+    {
+      printf("%s\n", dir->d_name); //print out files from d into dir
+    }
+    closedir(d); //close directory
+  }
 
   return 0;
 }
