@@ -20,12 +20,12 @@ int main(int argc, char **argv)
  
     if (dr == NULL)  // opendir returns NULL if couldn't open directory
     {
-        printf("Could not open current directory" );
-        return 0;
+      printf("Could not open current directory" );
+      return 1;
     }
   // Repeatly read and print entries
-  while ((de = readdir(dr)) != NULL)
-            printf("%s\n", de->d_name);
+    while ((de = readdir(dr)) != NULL)
+      printf("%s\n", de->d_name);
  
   // Close directory
   closedir(dr); 
