@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <dirent.h>
 #include <sys/stat.h>
+#include <string.h>
 
 /**
  * Main
@@ -23,12 +24,16 @@ int main(int argc, char **argv)
 
   // Open directory
   // If cant open dir send error.
-  if ((dir = opendir(currentDir)) == NULL)
+  if (strcmp(currentDir, "help") == 0)
+  {
+    printf("\n# # # # # # # #   LSLS HELP   # # # # # # # #\n To use this comandline program\n type the following: \n\n        ./lsls directory\n\n The following example will display the contents\n of two folders outside of your current one:\n\n        ./lsls ../../\n\n Thank you for using lsls\n# # # # # # # #   END  HELP   # # # # # # # #\n\n");
+  }
+  else if ((dir = opendir(currentDir)) == NULL)
   {
     perror("opendir error");
   }
   // If can open dir then read inside.
-  else
+  else if (strcmp(currentDir, "help") != 0)
   {
     while ((entry = readdir(dir)) != NULL)
     // For every result of readdir
@@ -46,7 +51,7 @@ int main(int argc, char **argv)
       {
         sprintf(type, "%ld", buf.st_size); // assigns the size to the type char array.
       }
-      printf("  %6s  %s\n", type, entry->d_name); // Prints out a line containing type/size and name of the item.
+      printf("  %12s  %s\n", type, entry->d_name); // Prints out a line containing type/size and name of the item.
     }
     closedir(dir);
   }
