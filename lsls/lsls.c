@@ -36,7 +36,8 @@ int main(int argc, char **argv)
         } //check for regular files with another bitwise AND
         else if ((buf.st_mode & S_IFREG) != 0) {
           // print out  size in bytes of each file and the name in field of width 10
-          sprintf(printString, "%10lld  %s\n", filesize, filename);
+          // got errors using %1011d as per suggestion so changed it %10d which should mean min width ten right-justify
+          sprintf(printString, "%10d  %s\n", filesize, filename);
         }
         else {
          
