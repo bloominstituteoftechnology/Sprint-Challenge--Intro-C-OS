@@ -26,9 +26,13 @@ int printDir(char *path)
       {
         printf("<DIR> %s\n", dir->d_name);
       }
-      else
+      else if (S_IFREG & buff.st_mode) // check if regular file(non-zero)
       {
         printf("%lld %s\n", buff.st_size, dir->d_name);
+      }
+      else
+      {
+        printf("<NO DIR OR FILE> %s\n", dir->d_name);
       }
 
       // clearn file path buff
