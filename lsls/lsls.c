@@ -22,11 +22,13 @@ int main(int argc, char **argv)
     exit(1);
   }
   if (argv[1])
+    printf("\033[01;33m");
     printf("Showing contents of: %s\n", argv[1]);
 
   // Repeatly read and print entries
   while(!((item=readdir(dir))=='\0'))
   {
+    printf("\033[0;36m");
     printf("%s\n", item->d_name);
   }
 
