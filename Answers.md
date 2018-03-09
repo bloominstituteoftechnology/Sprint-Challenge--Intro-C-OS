@@ -8,6 +8,6 @@
 
 2. Processor Management: This determines how programs are executed, so that it can multi-task.
 
-3. Device Management: Manages devices such as I/O controllers & periferals that areconnected to the computer.
+3. Device Management: Manages devices such as I/O controllers & periferals that are connected to the computer.
 
-4. File Management: Keeps track of allocated resources so that it can create, read, write & organize files and directories.
+4. File Management: Keeps track of allocated resources required to create, access and write files.
