@@ -8,9 +8,10 @@ int main(int argc, char **argv)
 {
   DIR *dir;
   struct dirent *entry;
-  char *currentDir = ".";
+  char currentDir[1024];
   // Parse command line
-
+  sprintf(currentDir, "%s", argv[1]);
+  printf("%s", currentDir);
   // Open directory
   // If cant open dir send error.
   if ((dir = opendir(currentDir)) == NULL)
