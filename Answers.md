@@ -1,0 +1,1 @@
+An operating system can handle managing memory, managing processes/threads, and communicating with hardware through drivers
