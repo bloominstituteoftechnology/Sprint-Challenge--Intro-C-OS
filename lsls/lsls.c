@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <dirent.h>
+#include <sys/stat.h>
 
 /**
  * Main
@@ -10,8 +11,16 @@ int main(int argc, char **argv)
   struct dirent *entry;
   char currentDir[1024];
   // Parse command line
-  sprintf(currentDir, "%s", argv[1]);
-  printf("%s", currentDir);
+  if (argc > 1)
+  {
+    sprintf(currentDir, "%s", argv[1]);
+    // printf("%s", currentDir);
+  }
+  else
+  {
+    sprintf(currentDir, "%s", ".");
+  }
+
   // Open directory
   // If cant open dir send error.
   if ((dir = opendir(currentDir)) == NULL)
@@ -26,7 +35,18 @@ int main(int argc, char **argv)
     // within the currentDirectory
     // print a new line with it.
     {
-      printf("  %s\n", entry->d_name);
+      struct stat buf;
+      char type[1024];
+      stat(entry->d_name, &buf);
+      if (entry->d_type == DT_DIR)
+      {
+        sprintf(type, "%s", "<DIR>");
+      }
+      else
+      {
+        sprintf(type, "%ld", buf.st_size);
+      }
+      printf("  %6s  %s\n", type, entry->d_name);
     }
     closedir(dir);
   }
