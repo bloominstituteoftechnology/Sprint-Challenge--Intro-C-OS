@@ -1,5 +1,11 @@
-// gcc -Wall -Wextra -o commandline commandline.c
- 
+/**
+ * Try running with various command line args:
+ *
+ * ./commandline hello world
+ * ./commandline this is a test
+ * ./commandline
+ */
+
 #include <stdio.h>
 
 int main(int argc, char **argv)
