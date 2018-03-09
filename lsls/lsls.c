@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <dirent.h>
 #include <sys/stat.h>
 
@@ -15,9 +16,7 @@ int printDir(char *path)
     while ((dir = readdir(d)) != NULL)
     {
       // get absolut path of file
-      strcat(file_path, path);
-      strcat(file_path, "/");
-      strcat(file_path, dir->d_name);
+      sprintf(file_path, "%s%s%s", path, "/", dir->d_name);
 
       // get the file info and store in the buff
       stat(file_path, &buff);
@@ -27,8 +26,10 @@ int printDir(char *path)
       {
         printf("<DIR> %s\n", dir->d_name);
       }
-
-      printf("%lld %s\n", buff.st_size, dir->d_name);
+      else
+      {
+        printf("%lld %s\n", buff.st_size, dir->d_name);
+      }
 
       // clearn file path buff
       file_path[0] = '\0';
