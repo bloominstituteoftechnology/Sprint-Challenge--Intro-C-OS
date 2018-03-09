@@ -9,10 +9,10 @@
 int main(int argc, char **argv)
 {
   // Parse command line
+  int count;
+  for (count = 0; count < argc; count++)
   {
-    int count;
-    for (count = 0; count < argc; count++)
-      puts(argv[count]);
+    puts(argv[count]);
   }
 
   // Open directory
@@ -31,6 +31,7 @@ int main(int argc, char **argv)
   {
     printf("%s ", entry->d_name);
   }
+
   printf("\n");
   // Close directory
   closedir(directory);

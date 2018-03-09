@@ -9,22 +9,31 @@
 int main(int argc, char **argv)
 {
   // Parse command line
-  {
-    int count;
-    for (count = 0; count < argc; count++)
-      puts(argv[count]);
-  }
-
-  // Open directory
   DIR *directory;
   struct dirent *entry;
+  int count;
 
-  directory = opendir(".");
-  if (directory == NULL)
+  if (argc == 1)
   {
-    printf("Error: Unable to read the contents of the directory. Exiting process.");
-    exit(1);
+    directory = opendir(".");
+
+    if (directory == NULL)
+    {
+      printf("Error: Unable to read the contents of the directory without any arguements. Exiting process.");
+      exit(1);
+    }
   }
+  else if (argc == 2)
+  {
+    directory = opendir(argv[1]);
+    
+    if (directory == NULL)
+    {
+      printf("Error: Unable to read the contents of the directory within the arguments provided. Exiting process.");
+      exit(1);
+    }
+  }
+  // Open directory
 
   // Repeatly read and print entries
   while ((entry = readdir(directory)) != '\0')
