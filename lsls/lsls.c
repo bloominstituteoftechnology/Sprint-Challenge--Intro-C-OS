@@ -11,19 +11,14 @@ int main(int argc, char **argv)
   // Open directory
   DIR *dir;
   struct dirent *sd;
-  char location[80];
 
-  if (argv == NULL)
+  if (argc == 1)
   {
     dir = opendir(".");
   } else
   {
-    for (int i = 0; argv[i] != '\0'; i++)
-    {
-      printf("Dir: %s\n", argv[i]);
-      sprintf(location, "%s%s", location, argv[i]);
-    }
-    dir = opendir(location);
+    char path = argv[1];
+    dir = opendir(path);
   }
   // handle error if null
   if (dir == NULL)
