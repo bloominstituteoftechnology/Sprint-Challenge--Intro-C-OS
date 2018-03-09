@@ -7,12 +7,14 @@
 int main(int argc, char **argv)
 {
   // Parse command line
-
+   if (argc > 1)
+  {
+    char *path = argv[1];
   // Open directory
-
+  
   // Repeatly read and print entries
-
+ 
   // Close directory
-
+  }
   return 0;
 }
