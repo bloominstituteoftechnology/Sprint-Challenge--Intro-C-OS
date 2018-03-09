@@ -1,16 +1,39 @@
-// gcc -Wall -Wextra -o testdir testdir.c
-
 #include <stdio.h>
 #include <dirent.h>
+#include <sys/types.h>
+#include <stdlib.h>
 
 /**
  * Main
  */
-int main(void)
+int main(int argc, char **argv)
 {
-  DIR *d = opendir(".");
-  printf("Testing: %s\n", d == NULL? "FAIL": "PASS");
-  closedir(d);
+  // Parse command line
+  {
+    int count;
+    for (count = 0; count < argc; count++)
+      puts(argv[count]);
+  }
+
+  // Open directory
+  DIR *directory;
+  struct dirent *entry;
+
+  directory = opendir(".");
+  if (directory == NULL)
+  {
+    printf("Error: Unable to read the contents of the directory. Exiting process.");
+    exit(1);
+  }
+
+  // Repeatly read and print entries
+  while ((entry = readdir(directory)) != '\0')
+  {
+    printf("%s ", entry->d_name);
+  }
+  printf("\n");
+  // Close directory
+  closedir(directory);
 
   return 0;
 }
