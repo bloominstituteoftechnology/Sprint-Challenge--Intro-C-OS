@@ -21,7 +21,8 @@ int main(int argc, char **argv)
   }
   
   ///////this is a test:
-  printf("%s\n", argv[1]);
+  if (argv[1])
+    printf("%s\n", argv[1]);
 
   // Repeatly read and print entries
 
