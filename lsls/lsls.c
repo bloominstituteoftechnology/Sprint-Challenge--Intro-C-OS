@@ -9,7 +9,7 @@
 int main(int argc, char **argv)
 {
   // Parse command line  
-  char *path = (argc > 1) ? argv[1] : ".";
+  char *path = (argc > 2) ? argv[1] : ".";
 
   // Open directory
   DIR *directory = opendir(path);
