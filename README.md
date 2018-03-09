@@ -52,10 +52,10 @@ and then add the command line parsing later after you have it working.
 _You are expected to use Google to find examples of how to use these functions.
 Also see [Details](#details), below._
 
-1. Call `opendir()`.
-2. Then repeatedly call `readdir()`--printing the filenames as you go--until it
-   lets you know there are no more directory entries by returning `NULL`.
-3. Then call `closedir()`.
+1.  Call `opendir()`.
+2.  Then repeatedly call `readdir()`--printing the filenames as you go--until it
+    lets you know there are no more directory entries by returning `NULL`.
+3.  Then call `closedir()`.
 
 You don't have to write the three functions, above. They're _system calls_ built
 into the OS.
@@ -69,13 +69,12 @@ the declarations for `DIR`, `struct dirent`, `opendir()`, `readdir()`, and
 * `DIR *opendir(char *path)`: This function opens the directory named in `path`
   (e.g. `.`) and returns a pointer to a variable of type `DIR` that will be used
   later. If there is an error, `opendir()` returns `NULL`.
-  
+
   _You should check for errors. If there is one, print an error message and exit
   (using the `exit()` function)._
 
 * `struct dirent *readdir(DIR *d)`: Reads the next directory entry from the
-  `DIR` returned by `opendir()`. Returns the result as a pointer to a `struct
-  dirent` (see below). Returns `NULL` if there are no more directory entires.
+  `DIR` returned by `opendir()`. Returns the result as a pointer to a `struct dirent` (see below). Returns `NULL` if there are no more directory entires.
 
 * `closedir(DIR *d)`: Close a directory (opened previously with `opendir()`)
   when you're done with it.
