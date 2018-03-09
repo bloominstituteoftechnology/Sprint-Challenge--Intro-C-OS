@@ -14,17 +14,30 @@ int printDir(char *path)
   {
     while ((dir = readdir(d)) != NULL)
     {
+      // get absolut path of file
       strcat(file_path, path);
       strcat(file_path, "/");
       strcat(file_path, dir->d_name);
+
+      // get the file info and store in the buff
       stat(file_path, &buff);
+
+      // check if DIR(non-zero) or FILE(zero)
+      if (S_IFDIR & buff.st_mode)
+      {
+        printf("<DIR> %s\n", dir->d_name);
+      }
+
       printf("%lld %s\n", buff.st_size, dir->d_name);
+
+      // clearn file path buff
       file_path[0] = '\0';
     }
     closedir(d);
   }
   else
   {
+    // print error message if no directory found
     printf("No such \"%s\" directory found\n", path);
     exit(1);
   }
@@ -38,13 +51,17 @@ int main(int argc, char **argv)
 {
   char *path;
 
+  // if only one command line argument, open current "." directory
   if (argc == 1)
   {
     path = ".";
+
+    // print whole directory
     printDir(path);
   }
   else
   {
+    // if second argument for specific dir path, print that dir
     path = argv[1];
     printDir(path);
   }
