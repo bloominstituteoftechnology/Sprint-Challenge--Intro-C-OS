@@ -20,6 +20,9 @@ int main(int argc, char **argv)
     exit(1);
   }
   
+  ///////this is a test:
+  printf("%s\n", argv[1]);
+
   // Repeatly read and print entries
 
   while(!((item=readdir(dir))=='\0'))
