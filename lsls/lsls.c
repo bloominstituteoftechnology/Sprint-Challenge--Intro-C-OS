@@ -13,7 +13,7 @@ int main(int argc, char **argv)
   Directory = argc < 2 ? opendir(defaultDirectory) : opendir(argv[1]);
   if(Directory == NULL) {
     printf("Failed to open directory, must not exist");
-    return 1;
+    exit();
   }
 
   while((directoryEntry = readdir(Directory)) != NULL ){
