@@ -35,10 +35,14 @@ int printFileList(char *path) {
       }
       closedir(d);
     }
+    else{
+      printf('Error %s', path);
+      exit(1);
+    }
     return(0);
 }
 
-int main(int argc, char *argv[]) 
+int main(int argc, char **argv) 
 {
     char *path;
 
