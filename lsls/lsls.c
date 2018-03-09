@@ -13,7 +13,7 @@ int main(int argc, char **argv)
   DIR *dir;
   struct dirent *item;
   if (argv[1]) {
-    dir = opendir("%s", argv[1]);
+    dir = opendir(argv[1]);
   }
   else {
     dir = opendir(".");
