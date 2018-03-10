@@ -11,7 +11,10 @@ type `make` in the `examples/` directory.) It should print `Testing: PASS`.
 
 ## Challenge 1
 
-Name at least three things that an operating system is responsible for handling?
+Name at least three things that an operating system is responsible for handling
+> Bridging IO with drivers.
+> Memory Management
+> Thread Management 
 
 ## Challenge 2
 

@@ -6,13 +6,32 @@
  */
 int main(int argc, char **argv)
 {
-  // Parse command line
+	DIR *d;
+	char cDir[1024];
 
-  // Open directory
+	// Reads Args	
+	sprintf(cDir, "%s", argv[1]);
+	
+	// Open directory
+	struct dirent *e;
+	while ((e = readdir(d)) != NULL)
+	{
+		WriteDir(e);
+	}
 
-  // Repeatly read and print entries
+	// close when done
+	closedir(d);
 
-  // Close directory
+	return 0;
+}
 
-  return 0;
+/**
+* Writes the current Dir
+*/
+void WriteDir(struct dirent *e)
+{
+	struct stat buf;
+	char type[1024];
+
+	printf("  %12s  %s\n", type, e->d_name);
 }
