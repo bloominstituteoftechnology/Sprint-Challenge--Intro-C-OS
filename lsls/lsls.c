@@ -3,23 +3,19 @@
 #include <sys/types.h>
 #include <stdlib.h>
 
-/**
- * Main
- */
 int main(int argc, char **argv)
 {
-  // Parse command line
   DIR *directory;
   struct dirent *entry;
   int count;
 
-  if (argc == 1)
+  if (argc < 2)
   {
     directory = opendir(".");
 
     if (directory == NULL)
     {
-      printf("Error: Unable to find a folder matching the parameters recieved. Exiting process.");
+      printf("Error: Unable to find a folder matching the argument recieved. Exiting process.");
       exit(1);
     }
   }
@@ -37,19 +33,15 @@ int main(int argc, char **argv)
     
     if (directory == NULL)
     {
-      printf("Error: Unable to find a folder matching the parameters recieved. Exiting process.");
+      printf("Error: Unable to find a folder matching the argument recieved. Exiting process.");
       exit(1);
     }
   }
-  // Open directory
-
-  // Repeatly read and print entries
   while ((entry = readdir(directory)) != '\0')
   {
     printf("%s ", entry->d_name);
   }
   printf("\n");
-  // Close directory
   closedir(directory);
 
   return 0;
