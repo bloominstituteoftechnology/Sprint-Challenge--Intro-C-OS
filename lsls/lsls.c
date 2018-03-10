@@ -17,7 +17,7 @@ int main(int argc, char **argv)
   // Open directory
 
   opendir(directory)
-   if (d == NULL)
+   if (directory == NULL)
   {
     printf("Error: Could not read directory\n");
     exit(ENOENT);
