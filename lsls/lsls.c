@@ -28,9 +28,9 @@ int main(int argc, char **argv)
     int check = strcmp(argv[1], "help");
     if (check == 0)
     {
-      printf("Usage:\n\"./lsls\" will list the directory contents of the folder you are currently in.\n");
-      printf("\"./lsls ..\" will list the directory contents of the folder below you.\n");
-      printf("\"./lsls ../../<folder name>\" will list the directory contents of the folder *relative to where you are.\n");
+      printf("Usage: ls already does a good job but one would add this to path.\n\"lsls\" will list the directory contents of the folder you are currently in.\n");
+      printf("\"lsls ..\" will list the directory contents of the parent folder.\n");
+      printf("\"lsls ../../<folder>\" will list the directory contents of the specific <folder>.\n");
       exit(0);
     }
     directory = opendir(argv[1]);
