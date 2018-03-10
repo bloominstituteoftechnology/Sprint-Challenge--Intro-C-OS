@@ -19,7 +19,7 @@ int main(int argc, char **argv)
 
     if (directory == NULL)
     {
-      printf("Error: Unable to read the contents of the directory without any arguements. Exiting process.");
+      printf("Error: Unable to find a folder matching the parameters recieved. Exiting process.");
       exit(1);
     }
   }
@@ -37,7 +37,7 @@ int main(int argc, char **argv)
     
     if (directory == NULL)
     {
-      printf("Error: Unable to read the contents of the directory within the arguments provided. Exiting process.");
+      printf("Error: Unable to find a folder matching the parameters recieved. Exiting process.");
       exit(1);
     }
   }
