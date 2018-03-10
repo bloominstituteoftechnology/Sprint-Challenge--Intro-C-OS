@@ -25,6 +25,14 @@ int main(int argc, char **argv)
   }
   else if (argc == 2)
   {
+    int check = strcmp(argv[1], "help");
+    if (check == 0)
+    {
+      printf("Usage:\n\"./lsls\" will list the directory contents of the folder you are currently in.\n");
+      printf("\"./lsls ..\" will list the directory contents of the folder below you.\n");
+      printf("\"./lsls ../../<folder name>\" will list the directory contents of the folder *relative to where you are.\n");
+      exit(0);
+    }
     directory = opendir(argv[1]);
     
     if (directory == NULL)
