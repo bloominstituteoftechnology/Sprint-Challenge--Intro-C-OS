@@ -1,31 +1,35 @@
-// #include <stdio.h>
-// #include <dirent.h>
-
-// /**
-//  * Main
-//  */
-// int main(int argc, char **argv)
-// {
-//   // Parse command line
-
-//   // Open directory
-
-//   // Repeatly read and print entries
-
-//   // Close directory
-
-//   return 0;
-// }
-
-
 #include <stdio.h>
 #include <dirent.h>
+#include <stdlib.h> // for the exit
 
 
-int printFileList(char *path) {
-  DIR *d;
+
+int main(int argc, char **argv) // pointer to a pointer. Pointer pointer 
+{
+  char *dirname;
+  int i;
+
+    printf("There are %d command line argument(s):\n", argc);
+
+    for (i = 0; i < argc; i++) {
+        printf("   %s\n", argv[i]);
+    }
+  if ( argc > 2)
+  {
+    printf("ERROR: Too many arguments :(\n");
+    exit(128); // invalid arguments 
+  }
+  else if ( argc == 1)
+  {
+  dirname = '.';
+  }
+  else
+  {
+    dirname = argv[1];
+  }
+  DIR *d; 
     struct dirent *dir;
-    d = opendir(".");
+    d = opendir(dirname);
     if (d) {
       while ((dir = readdir(d)) != NULL) {
          if (dir->d_type == DT_REG) // DT_REG == A regular file
@@ -36,24 +40,9 @@ int printFileList(char *path) {
       closedir(d);
     }
     else{
-      printf('Error %s', path);
+      printf("Error %p", d);
       exit(1);
     }
-    return(0);
-}
-
-int main(int argc, char **argv) 
-{
-    char *path;
-
-   if (argc == 1)
-    {
-    path = ".";
-    printFileList(path);
-    }
-    else
-    {
-      path=argv[1];
-      printFileList(path);
-    }
+    
+    return 0;
 }
