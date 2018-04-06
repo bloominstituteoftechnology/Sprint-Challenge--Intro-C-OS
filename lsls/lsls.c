@@ -32,8 +32,10 @@ int main(int argc, char **argv)
   
     if (buf.st_mode & S_IFDIR) {
       printf("%11s", "<DIR> ");
-    } else {
+    } else if (buf.st_mode &S_IFREG) {
       printf("%10ld ", buf.st_size);
+    } else {
+      printf("%11s", "<OTHER> ");
     }
 
     printf("%s\n", entry->d_name);
