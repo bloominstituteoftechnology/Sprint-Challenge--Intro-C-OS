@@ -12,7 +12,7 @@ int main(int argc, char **argv)
 {
   DIR *dir;
   struct dirent *entry;
-  char currentDir = [1024];
+  char currentDir[1024];
   // Parse command line
   if (argc > 1)
   {
