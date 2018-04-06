@@ -27,13 +27,18 @@ int printDir(char *path)
  */
 int main(int argc, char **argv)
 {
-  // Parse command line
+  char *path;
 
-  // Open directory
-
-  // Repeatly read and print entries
-
-  // Close directory
+  if (argc == 1)
+  {
+    path = ".";
+    printDir(path);
+  }
+  else 
+  {
+    path = argv[1];
+    printDir(path);
+  }
 
   return 0;
 }
