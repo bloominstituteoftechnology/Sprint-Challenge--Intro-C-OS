@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <dirent.h>
+#include <sys/stat.h>
 
 /**
  * Main
@@ -26,6 +27,15 @@ int main(int argc, char **argv)
   struct dirent *entry;
   
   while ((entry = readdir(ls_directory)) != NULL) {       // combined assign and check entry for null
+    struct stat buf;
+    stat(entry->d_name, &buf);
+  
+    if (buf.st_mode & S_IFDIR) {
+      printf("%11s", "<DIR> ");
+    } else {
+      printf("%10ld ", buf.st_size);
+    }
+
     printf("%s\n", entry->d_name);
   };
 
