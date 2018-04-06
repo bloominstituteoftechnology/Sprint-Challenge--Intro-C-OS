@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <dirent.h>
 #include <sys/stat.h>
 
@@ -14,15 +15,23 @@ int printDir(char *path)
     {
       while ((dir = readdir(d)) != NULL)
       {
-        strcat(file_path, path);
-        strcat(file_path, "/");
-        strcat(file_path, dir->d_name);
+        sprintf(file_path, "%s %s %s", path, "/", dir->d_name);
+        
         stat(file_path, &buff);
+        
         if (S_IFDIR & buff.st_mode)
         {
           printf("<DIR> %s\n", dir->d_name);
         }
-        printf("%lld\n", buff.st_size, dir->d_name);
+        else if (S_IFREG & buff.st_mode)
+        {
+          printf("%lld %s\n", buff.st_size, dir->d_name);
+        }
+        else
+        {
+          printf("<NO DIR> %s\n", dir->d_name);
+        }
+    
         file_path[0] = '\0';
       }
       closedir(d);
