@@ -22,7 +22,7 @@ int printDir(char *path) {
       strcat(file_path, ent->d_name);
       stat(file_path, &buff);
       
-      printf("%10ld, %s\n", buff.st_size, ent->d_name);
+      printf("%10lld, %s\n", buff.st_size, ent->d_name);
       
       file_path[0] = '\0';
       }
