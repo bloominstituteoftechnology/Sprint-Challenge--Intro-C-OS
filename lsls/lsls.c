@@ -39,6 +39,7 @@ int main(int argc, char **argv)
       stat(entry->d_name, &buf);
       if (entry->d_type == DT_DIR)
       {
+        // print <DIR> instead of size for directories
         sprintf(type, "%s", "<DIR>");
       }
       else
