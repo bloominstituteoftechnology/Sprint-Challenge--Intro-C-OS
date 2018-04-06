@@ -25,9 +25,15 @@ int main(int argc, char **argv)
   // Repeatly read and print entries
   while ((ent = readdir(currentDir)) != NULL) {
     struct stat buf;
-    char size[1024];
+    char type[1024];
     stat(ent->d_name, &buf);
-    printf("%10lld %s\n", size, ent->d_name);
+    if (ent->d_type == DT_DIR) {
+      sprintf(type, "%10lld", "<DIR>");
+    } else {
+      sprintf(type, "%10lld", buf.st_size);
+    }
+
+    printf("%10lld %s\n", type, ent->d_name);
   }
   // Close directory
   closedir(currentDir);
