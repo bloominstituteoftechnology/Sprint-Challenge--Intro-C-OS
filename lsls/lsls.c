@@ -11,19 +11,17 @@ int main(int argc, char **argv)
   {
   int i;
 
-  printf("There are %d command line argument(s):\n", argc);
-
+  printf("There are %d command(s) line argument(s):\n", argc);
   for (i = 0; i < argc; i++) {
+
     printf("   %s\n", argv[i]);
   }
 
   DIR *dp;
-  struct stat st;
 
   // Open directory
   dp = opendir(argv[1]);
 
-  char buf[512];
 
   if (dp == NULL) {
     fprintf(stderr, "Error: can't open directory %s\n", argv[1]);
@@ -34,9 +32,14 @@ int main(int argc, char **argv)
 
   // Repeatly read and print entries
   while ((sd = readdir(dp)) != NULL) {
-    stat(buf, &st);
+    // struct stat st;
+    // char path[512];
+
+    // sprintf(path, "%s/%s", path, sd->d_name);
+    // stat(path, &st);
+
     printf("%s\n",sd->d_name);
-    // printf("file size is %10lld\n", st.st_size);
+    // printf("file size is %10lld %s\n", st.st_size, sd->d_name);
     // printf("file size is %d\n", st);
   }
     // Close directory
