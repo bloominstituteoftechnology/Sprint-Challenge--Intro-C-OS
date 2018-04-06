@@ -21,7 +21,7 @@ int main(int argc, char **argv)
 
   // Repeatly read and print entries
   while ((dirEntry = readdir(dirName)) != NULL){
-    printf("Entry - %s\n", dirEntry->d_name);
+    printf("%s\n", dirEntry->d_name);
   }
   // Close directory
   closedir(dirName);
