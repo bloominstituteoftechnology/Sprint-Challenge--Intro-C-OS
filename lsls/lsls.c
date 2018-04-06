@@ -22,18 +22,17 @@ int main(int argc, char **argv)
   }
 
   // Open directory
-  // If cant open dir send error.
+  // Handle Error
   if ((dir = opendir(currentDir)) == NULL)
   {
-    perror("ERROR");
+  perror("ERROR");
   }
   // If can open dir then read inside.
   else
   {
     while ((entry = readdir(dir)) != NULL)
-    // For every result of readdir
-    // within the currentDirectory
-    // print a new line with it.
+    // new line for every directory
+    // print size in bytes
     {
       struct stat buf;
       char type[1024];
@@ -44,6 +43,7 @@ int main(int argc, char **argv)
       }
       else
       {
+        // print in bytes
         sprintf(type, "%ld", buf.st_size);
       }
       printf("  %6s  %s\n", type, entry->d_name);
