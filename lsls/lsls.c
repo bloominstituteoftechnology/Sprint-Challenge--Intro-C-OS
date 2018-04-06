@@ -20,7 +20,7 @@ int main(int argc, char **argv)
   // Open directory
 	if (!(dirp = opendir(current_dir)))
 	{
-		printf("%s\n", "There was an error");
+		printf("ls: %s: %s\n", current_dir, "No such file or directory");
 		exit(0);
 	}
   // Repeatly read and print entries
