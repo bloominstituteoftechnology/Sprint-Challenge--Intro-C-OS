@@ -1,16 +1,30 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <dirent.h>
+#include <sys/stat.h>
+#include <string.h>
 
 int printDir(char *path) {
   
   struct dirent *ent;
+  struct stat buff;
+  char file_path[128];
+
   DIR *d;
   d = opendir(path);
   
   if (d) {
     while ((ent = readdir(d)) != NULL) {
-      printf("%s\n", ent->d_name);
+      
+      strcat(file_path, path);
+      strcat(file_path, "/");
+      
+      strcat(file_path, ent->d_name);
+      stat(file_path, &buff);
+      
+      printf("%lld, %s\n", buff.st_size, ent->d_name);
+      
+      file_path[0] = '\0';
       }
       closedir(d);
       } else {
