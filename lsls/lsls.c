@@ -28,15 +28,29 @@ int main(int argc, char **argv)
   
   while ((entry = readdir(ls_directory)) != NULL) {       // combined assign and check entry for null
     struct stat buf;
-    stat(entry->d_name, &buf);
-  
-    if (buf.st_mode & S_IFDIR) {
+    char fullpath[1024];
+    
+    sprintf(fullpath, "%s/%s", directory, entry->d_name);
+    stat(fullpath, &buf);
+
+    if (entry->d_type == DT_DIR) {
       printf("%11s", "<DIR> ");
-    } else if (buf.st_mode &S_IFREG) {
+    } else if (entry->d_type == DT_REG){
       printf("%10ld ", buf.st_size);
     } else {
       printf("%11s", "<OTHER> ");
-    }
+    };
+
+    // struct stat buf;
+    // stat(entry->d_name, &buf);
+  
+    // if (buf.st_mode & S_IFDIR) {
+    //   printf("%11s", "<DIR> ");
+    // } else if (buf.st_mode &S_IFREG) {
+    //   printf("%10ld ", buf.st_size);
+    // } else {
+    //   printf("%11s", "<OTHER> ");
+    // }
 
     printf("%s\n", entry->d_name);
   };
