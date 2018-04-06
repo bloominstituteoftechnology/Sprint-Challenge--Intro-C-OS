@@ -61,7 +61,7 @@ int main(int argc, char **argv)
 
           if (isDir)
           {
-            printf("%10s  %s\n", "<dir>", file);
+            printf("%10s  %s\n", "<DIR>", file);
           }
 
           else if (isFile)
@@ -71,7 +71,7 @@ int main(int argc, char **argv)
 
           else
           {
-            printf("%10s  %s\n", "", file);
+            printf("%10lld  %s\n", buf.st_size, file);
           }
         }
       }
