@@ -20,13 +20,16 @@ int main(int argc, char **argv)
 
     DIR *dp;
     struct dirent *sd;
+    struct stat st;
+    char buf[512];
     // Open directory
     dp = opendir(argv[1]);
 
     // Repeatly read and print entries
     while ((sd = readdir(dp)) != NULL) {
+      stat(buf, &st);
       printf("%s\n",sd->d_name);
-
+      printf("%lld\n", st.st_size);
     }
     // Close directory
     closedir(dp);
