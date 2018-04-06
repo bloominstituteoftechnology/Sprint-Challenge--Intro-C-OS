@@ -49,26 +49,29 @@ int main(int argc, char **argv)
         while ((ent = readdir(directory)) != NULL)
         {
           char *file = ent->d_name;
-
           char *path_file = malloc(strlen(path) + strlen("/") + strlen(file) + 1);
-          strcat(path_file, path);
-          strcat(path_file, "/");
-          strcat(path_file, file);
 
           struct stat buf;
-          stat(path_file, &buf);
 
           int isDir = buf.st_mode & S_IFDIR;
-          // int isFile = buf.st_mode & S_IFREG;
+          int isFile = buf.st_mode & S_IFREG;
+
+          sprintf(path_file, "%s/%s", path, file);
+          stat(path_file, &buf);
 
           if (isDir)
           {
             printf("%10s  %s\n", "<dir>", file);
           }
 
-          else
+          else if (isFile)
           {
             printf("%10lld  %s\n", buf.st_size, file);
+          }
+
+          else
+          {
+            printf("%10s  %s\n", "", file);
           }
         }
       }
