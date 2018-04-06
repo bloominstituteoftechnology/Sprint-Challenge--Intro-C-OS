@@ -13,6 +13,11 @@ type `make` in the `examples/` directory.) It should print `Testing: PASS`.
 
 Name at least three things that an operating system is responsible for handling?
 
+Operating systems are responsible for the following:
+  - operating systems provide a graphical user interface which makes computers accessible and user friendly 
+  - operating systems are responsible for hardware management
+  - operating systems manage memory
+
 ## Challenge 2
 
 Write a program in C, `lsls.c`, that prints out a directory listing for the
