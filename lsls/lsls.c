@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include <errno.h>
 #include <string.h>
+#include <sys/stat.h>
 
 /**
  * Main
@@ -47,7 +48,17 @@ int main(int argc, char **argv)
 
         while ((ent = readdir(directory)) != NULL)
         {
-          printf("%s\n", ent->d_name);
+          char *file = ent->d_name;
+
+          char *path_file = malloc(strlen(path) + strlen("/") + strlen(file) + 1);
+          strcat(path_file, path);
+          strcat(path_file, "/");
+          strcat(path_file, file);
+
+          struct stat buf;
+          stat(path_file, &buf);
+
+          printf("%10lld  %s\n", buf.st_size, file);
         }
       }
 
