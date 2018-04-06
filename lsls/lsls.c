@@ -18,6 +18,10 @@ int printDir(char *path)
         strcat(file_path, "/");
         strcat(file_path, dir->d_name);
         stat(file_path, &buff);
+        if (S_IFDIR & buff.st_mode)
+        {
+          printf("<DIR> %s\n", dir->d_name);
+        }
         printf("%lld\n", buff.st_size, dir->d_name);
         file_path[0] = '\0';
       }
