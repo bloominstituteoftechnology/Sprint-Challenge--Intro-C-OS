@@ -21,7 +21,7 @@ int main(int argc, char **argv)
       path = ".";
     }
 
-    if (i == 0 && argc != 1)
+    if (i == 0 && argc > 1)
     {
       /* if user provides dirs */
       /* skip zero-index argv  */
@@ -58,7 +58,18 @@ int main(int argc, char **argv)
           struct stat buf;
           stat(path_file, &buf);
 
-          printf("%10lld  %s\n", buf.st_size, file);
+          int isDir = buf.st_mode & S_IFDIR;
+          // int isFile = buf.st_mode & S_IFREG;
+
+          if (isDir)
+          {
+            printf("%10s  %s\n", "<dir>", file);
+          }
+
+          else
+          {
+            printf("%10lld  %s\n", buf.st_size, file);
+          }
         }
       }
 
