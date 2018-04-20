@@ -21,7 +21,7 @@ int main(int argc, char **argv)
   };
   
   if (argc == 2) {
-    sprintf(target_dir, argv[1]);
+    sprintf(target_dir, "%s", argv[1]);
   };
 
   if ((dirp = opendir(target_dir)) == NULL) {
@@ -35,7 +35,11 @@ int main(int argc, char **argv)
       sprintf(path, "%s/%s", target_dir, dp->d_name);
       stat(path, &buf);
       free(path);
-      (void) printf("%10lld %s\n", buf.st_size, dp->d_name);
+      if (buf.st_mode & S_IFDIR) {
+        printf("%10s %s\n", "<DIR>", dp->d_name);
+      } else {
+      printf("%10lld %s\n", buf.st_size, dp->d_name);
+      }
     }
   } while (dp != NULL);
 
