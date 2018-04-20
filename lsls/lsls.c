@@ -7,12 +7,22 @@
 int main(int argc, char **argv)
 {
   // Parse command line
+  DIR *directory;
+  char *current = ".";
 
   // Open directory
-
-  // Repeatly read and print entries
-
-  // Close directory
+  if ((directory = opendir(current)) == NULL) {
+    printf("Directory is empty!");
+    exit(0);
+  } else {
+    // Repeatly read and print entries
+    struct dirent *entry;
+    while ((entry = readdir(directory)) != NULL) {
+      printf("%s\n", entry->d_name);
+    }
+    // Close directory
+    closedir(directory);
+  }
 
   return 0;
 }
