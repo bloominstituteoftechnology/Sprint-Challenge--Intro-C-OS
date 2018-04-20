@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <dirent.h>
 #include <string.h>
+#include <sys/stat.h>
+#include <stdlib.h>
 
 /**
  * Main
@@ -9,6 +11,7 @@ int main(int argc, char **argv)
 {
   DIR *dirp;
   struct dirent *dp;
+  struct stat buf;
   char target_dir[1024] = ".";
 
   if (argc > 2) {
@@ -28,7 +31,11 @@ int main(int argc, char **argv)
 
   do {
     if ((dp = readdir(dirp)) != NULL) {
-      (void) printf("%s\n", dp->d_name);
+      char* path = malloc(1024*sizeof(char));
+      sprintf(path, "%s/%s", target_dir, dp->d_name);
+      stat(path, &buf);
+      free(path);
+      (void) printf("%10lld %s\n", buf.st_size, dp->d_name);
     }
   } while (dp != NULL);
 
