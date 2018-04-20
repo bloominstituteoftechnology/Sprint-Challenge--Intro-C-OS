@@ -14,5 +14,15 @@ int main(int argc, char **argv)
 
   // Close directory
 
+  DIR *dir;
+  struct dirent *dent;
+  char buffer[50];
+  strcpy(buffer, argv[1]);
+  dir = opendir(buffer);
+  if (dir != NULL) {
+    while((dent=readdir(dir)) != NULL)
+      printf(dent -> d_name);
+  }
+  close(dir);
   return 0;
 }

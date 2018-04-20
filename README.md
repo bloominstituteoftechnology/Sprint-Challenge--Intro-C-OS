@@ -13,10 +13,13 @@ type `make` in the `examples/` directory.) It should print `Testing: PASS`.
 
 Name at least three things that an operating system is responsible for handling?
 
-1. The operating system determines which programs should run in what order and how much time should be allowed for each programs before giving another program a turn through process scheduling. **(Note - Programs are applications.)** It also manages sharing internal memory between the multiple applications. In addition to this, it uses parrallel processing to divide an application so that it can run on more than one processor at a time. 
+**Multiprocessing**
+1. The operating system determines which programs should run in what order and how much time should be allowed for each programs before giving another program a turn through process scheduling.(Note - Programs are also applications.) It also manages sharing internal memory between the multiple applications. In addition to this, it uses parrallel processing to divide an application so that it can run on more than one processor at a time. 
 
+**Input/Output**
 2. Operating system also handles the input and output to and from attached hardware (hard disks, printers, etc). Another example is through the inputting of a keyboard and having characters display on the monitor. The OS is an intermediary between the software and hardware components. When hardware components need to implement programs, the OS taps onto their drivers, installs them, and implements their applications on the computer. 
 
+**User Interaction**
 3. In exchanges between the operating system and the user, the OS takes commands from the user through a command line and GUI (graphic user interface). It sends messages to each application or user about the status of operation and errors they may encounter. This is why it's useful for security, making sure that unauthorized users do not try to access the OS without the authorized user's consent. 
 
 ## Challenge 2
