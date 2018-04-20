@@ -13,12 +13,14 @@ void printDirs(DIR *d, char dir[])
   entry = readdir(d);
   while(entry != NULL) {
     sprintf(path, "%s/%s", dir, entry->d_name);
-    // printf("test: %s\n", entry->d_name);
     stat(path, &buf);
-    if((buf.st_mode & S_IFDIR) != 0) {
+
+    if((buf.st_mode & S_IFDIR) != 0) {  // Testing if its a directory
       printf("     <DIR>    %s\n", entry->d_name);
-    } else if ((buf.st_mode & S_IFREG) != 0) {
+
+    } else if ((buf.st_mode & S_IFREG) != 0) {  // Testing if its a file
       printf("%10lld    %s\n", buf.st_size, entry->d_name);
+
     } else {
       printf("              %s\n", entry->d_name);
     }
@@ -32,23 +34,27 @@ void printDirs(DIR *d, char dir[])
  */
 int main(int argc, char **argv)
 {
-  // Parse command line
+  DIR *d;
+
   if(argc > 2) {
-    // printf("%d\n%s\n%s", argc, argv[0], argv[1]);
     perror("Too many arguments supplied");
     return 1;
   }
   if(argc > 1) {
-    DIR *d = opendir(argv[1]);
+    d = opendir(argv[1]);
+
     if(d == NULL) {
       perror("Directory doesnt exist");
+      return 1;
     } else {
       printDirs(d, argv[1]);
     }
   } else {
-    DIR *d = opendir(".");
+    d = opendir(".");
+
     if(d == NULL) {
       perror("Directory doesnt exist");
+      return 1;
     } else {
       printDirs(d, ".");
     }
