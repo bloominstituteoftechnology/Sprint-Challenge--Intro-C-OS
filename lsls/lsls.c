@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <dirent.h>
+#include <stdlib.h>
 
 /**
  * Main
@@ -44,6 +45,8 @@ int main(int argc, char **argv)
   else
   {
     printf("opened_dir is super NULL\n");
+    closedir(opened_dir);    
+    exit(1);
   }
 
   // Repeatly read and print entries
