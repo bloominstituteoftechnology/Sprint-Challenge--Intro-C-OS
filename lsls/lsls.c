@@ -7,27 +7,37 @@
  */
 int main(int argc, char **argv)
 {
-  struct dirent *ent;
+
   // Parse command line
   int d;
   char *args;
 
-  for (d = 0; d < argc; d++)
+  if (argc == 1)
   {
-    // input transformed to args which opens specified dir.
-    args = argv[d];
+    args = '.';
   }
+  else if (argc == 2)
+  {
+    args = argv[1];
+  }
+  else
+  {
+    fprintf(stderr, "usage: lsls [args]\n");
+    exit(1);
+  }
+
   // Open directory
   DIR *directory = opendir(args);
   // Repeatly read and print entries
+  struct dirent *ent;
   if (directory == NULL)
   {
-    perror("Empty Directory.");
-
+    fprintf(stderr, "lsls: cannot open directory%s\n", args);
+    exit(2);
   }
   while ((ent = readdir(directory)) != NULL)
   {
-    printf("%s\n", ent -> d_name);
+    printf("%s\n", ent->d_name);
   }
 
   // Close directory
