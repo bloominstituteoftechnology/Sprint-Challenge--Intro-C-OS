@@ -42,7 +42,7 @@ int main(int argc, char **argv)
     {
       sprintf(type, "%ld", buf.st_size);
     }
-     printf(" %8s\n", entry-> d_name);
+     printf(" %8s %s\n", type, entry-> d_name);
    }
   closedir(dir);
   }
