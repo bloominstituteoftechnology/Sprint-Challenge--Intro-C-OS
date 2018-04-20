@@ -1,17 +1,30 @@
 #include <stdio.h>
 #include <dirent.h>
 #include <stdlib.h>
+#include <sys/stat.h>
 
 /**
  * Main
  */
-void print_all(DIR *dir)
+void print_all(DIR *dir, char *given_path)
 {
   struct dirent *entry;
+  struct stat size;
+  char actual_path[100];
+
+  // printf("here is the full dir currently: %s\n", dir);
 
   while ((entry = readdir(dir)) != NULL)
   {
-  printf("entry name: %s\n", entry->d_name);
+    sprintf(actual_path, "%s/%s", given_path, entry->d_name);
+    stat(actual_path, &size);
+    if(size.st_size == 4096)
+    {
+      printf("%10s %s\n", "<DIR>", entry->d_name);      
+    }
+    else{
+      printf("%10ld %s\n", size.st_size, entry->d_name);
+    }
   }
 }
 
@@ -50,7 +63,7 @@ int main(int argc, char **argv)
   }
 
   // Repeatly read and print entries
-  print_all(opened_dir);
+  print_all(opened_dir, path);
 
   // Close directory
   closedir(opened_dir);
