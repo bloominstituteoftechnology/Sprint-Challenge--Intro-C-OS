@@ -4,6 +4,16 @@
 /**
  * Main
  */
+void print_all(DIR *dir)
+{
+  struct dirent *entry;
+
+  while ((entry = readdir(dir)) != NULL)
+  {
+  printf("entry name: %s\n", entry->d_name);
+  }
+}
+
 int main(int argc, char **argv)
 {
 
@@ -37,6 +47,7 @@ int main(int argc, char **argv)
   }
 
   // Repeatly read and print entries
+  print_all(opened_dir);
 
   // Close directory
   closedir(opened_dir);
