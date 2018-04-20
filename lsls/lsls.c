@@ -1,13 +1,21 @@
 #include <stdio.h>
 #include <dirent.h>
 #include <errno.h>
+#include <sys/stat.h>
+#include <string.h>
 
-void printDirs(DIR *d)
+void printDirs(DIR *d, char dir[])
 {
   struct dirent *entry;
+  struct stat buf;
+  char path[200];
+
   entry = readdir(d);
   while(entry != NULL) {
-    printf("%s\n", entry->d_name);
+    sprintf(path, "%s/%s", dir, entry->d_name);
+    // printf("test: %s\n", entry->d_name);
+    stat(path, &buf);
+    printf("%10lld    %s\n", buf.st_size, entry->d_name);
     entry = readdir(d);
   }
   closedir(d);
@@ -29,14 +37,14 @@ int main(int argc, char **argv)
     if(d == NULL) {
       perror("Directory doesnt exist");
     } else {
-      printDirs(d);
+      printDirs(d, argv[1]);
     }
   } else {
     DIR *d = opendir(".");
     if(d == NULL) {
       perror("Directory doesnt exist");
     } else {
-      printDirs(d);
+      printDirs(d, ".");
     }
   }
 
