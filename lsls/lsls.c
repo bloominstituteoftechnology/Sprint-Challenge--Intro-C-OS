@@ -37,10 +37,12 @@ int main(int argc, char **argv)
       stat(filename, buffer);
       // store size of buffer
       int bytes = (*buffer).st_size;
-      printf("%5d  %s\n", bytes, filename);
-      
+      // check if file or directory
+      if (((*buffer).st_mode & S_IFDIR) == 0) printf("%5d  %s\n", bytes, filename);
+      else printf("<DIR>  %s\n", filename);
       free(buffer);
     }
+    
     printf("\n");
 
     closedir(d);
@@ -65,6 +67,7 @@ int main(int argc, char **argv)
       buffer = malloc(sizeof(struct stat));
       stat(filename, buffer);
       int bytes = (*buffer).st_size;
+      
       printf("%5d  %s\n", bytes, filename);
       free(buffer);
     }
