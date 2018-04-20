@@ -6,7 +6,7 @@
 /**
  * Main
  */
-void print_all(DIR *dir, char *given_path)
+void print_all(DIR *dir, char given_path[])
 {
   struct dirent *entry;
   struct stat size;
@@ -18,12 +18,17 @@ void print_all(DIR *dir, char *given_path)
   {
     sprintf(actual_path, "%s/%s", given_path, entry->d_name);
     stat(actual_path, &size);
-    if(size.st_size == 4096)
+    if ((size.st_mode & S_IFDIR) != 0)
     {
       printf("%10s %s\n", "<DIR>", entry->d_name);      
     }
-    else{
+    else if ((size.st_mode & S_IFREG) != 0)
+    {
       printf("%10ld %s\n", size.st_size, entry->d_name);
+    }
+    else
+    {
+      printf("%10s %s\n", "", entry->d_name);      
     }
   }
 }
