@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <dirent.h>
+#include <stdlib.h> /* included for exit() usage requested in specs */
 
 int main(int argc, char **argv)
 { 
@@ -7,7 +8,7 @@ int main(int argc, char **argv)
   /* also implemented to prevent compilation warning from unused argc param */
   if (argc > 2) {
     printf("Too many arguments supplied by the user. Please try again.\n");
-    return 0;
+    exit(-1);
   }
   /* open specified directory if supplied by user, otherwise opens current dir */
   DIR *directory = opendir(argv[1] ? argv[1] : ".");
@@ -23,6 +24,8 @@ int main(int argc, char **argv)
   /* internal error handling */
   } else {
     printf("An error occured while reading the data. Please try again.");
+    /* exit as instructed in specs */
+    exit(-1);
   }
   /* close the directory */
   closedir(directory);
