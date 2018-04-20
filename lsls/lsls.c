@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <dirent.h>
+#include <stdlib.h>
 
 
 /**
@@ -17,18 +18,25 @@ int main(int argc, char **argv)
   //   }
   DIR *d;
   // Open directory
-  d = opendir(".");
+  int error = 0;
+  d = opendir(char *path);
   // Repeatly read and print entries
+  if(d == NULL ) {
+    d = opendir(".");
+  }
   struct dirent *ent;
-
   if(d != NULL) {
     while((ent = readdir(d)) != NULL) {
       printf("%s\n", ent->d_name);
     }
+  } else if(error == 0) {
+    closedir(d);  
+    printf("error occured");
+    exit(1);
   }
+
   // Close directory
-  closedir(d);
-    
+  closedir(d);   
   return 0;
 }
 
