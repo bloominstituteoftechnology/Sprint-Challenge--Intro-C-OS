@@ -17,11 +17,11 @@ void print_dirs(DIR *d, char dir[]) {
     stat(path, &buf);
 
     if ((buf.st_mode & S_IFDIR) != 0) {
-      printf("<DIR> %s\n", ent->d_name);
+      printf("%10s %s\n", "<DIR>", ent->d_name);
     } else if ((buf.st_mode & S_IFREG) != 0) {
       printf("%10ld %s\n", buf.st_size, ent->d_name);
     } else {
-      printf("%s\n", ent->d_name);
+      printf("%10s %s\n", "", ent->d_name);
     }
   }
   closedir(d);
