@@ -15,7 +15,13 @@ void printDirs(DIR *d, char dir[])
     sprintf(path, "%s/%s", dir, entry->d_name);
     // printf("test: %s\n", entry->d_name);
     stat(path, &buf);
-    printf("%10lld    %s\n", buf.st_size, entry->d_name);
+    if((buf.st_mode & S_IFDIR) != 0) {
+      printf("     <DIR>    %s\n", entry->d_name);
+    } else if ((buf.st_mode & S_IFREG) != 0) {
+      printf("%10lld    %s\n", buf.st_size, entry->d_name);
+    } else {
+      printf("              %s\n", entry->d_name);
+    }
     entry = readdir(d);
   }
   closedir(d);
