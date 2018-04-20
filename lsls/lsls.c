@@ -33,7 +33,11 @@ int main(int argc, char **argv)
       file_name = dp->d_name;
       sprintf(fullpath, "%s/%s", dir_arg, file_name);
       stat(fullpath, &buff);
-      printf("%10lldbytes | %s\n", buff.st_size, file_name);
+      if ((buff.st_mode & S_IFDIR) != 0) {
+        printf("          <DIR> | %s/\n", file_name);
+      } else {
+        printf("%10lldbytes | %s\n", buff.st_size, file_name);
+      }
   }
   // Close directory
   closedir(dir);
