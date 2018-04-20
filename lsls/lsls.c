@@ -6,6 +6,7 @@
  */
 int main(int argc, char **argv)
 {
+  //line for commit
   // Parse command line
 
   // Open directory
