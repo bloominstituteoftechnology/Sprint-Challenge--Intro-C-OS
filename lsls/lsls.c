@@ -8,7 +8,13 @@ int main(int argc, char **argv)
 {
   // Parse command line
   DIR *directory;
-  char *current = ".";
+  char *current;
+
+  if (argc == 1) {
+    current = ".";
+  } else {
+    current = argv[1];
+  }
 
   // Open directory
   if ((directory = opendir(current)) == NULL) {
