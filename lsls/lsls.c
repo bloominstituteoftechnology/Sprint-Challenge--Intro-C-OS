@@ -32,7 +32,11 @@ int main(int argc, char **argv)
         while ((dp = readdir(dir)) != NULL) {
           // printf("%s\n", dp->d_name);
           stat(dp->d_name, &buf);
-          printf("%lld %s\n", buf.st_size, dp->d_name);
+          if (buf.st_mode & S_IFDIR) {
+            printf("<DIR> %s\n", dp->d_name);
+          } else {
+            printf("%lld %s\n", buf.st_size, dp->d_name);
+          }
         }
       } else {
         printf("Path: < %s > not found.\n", path);
