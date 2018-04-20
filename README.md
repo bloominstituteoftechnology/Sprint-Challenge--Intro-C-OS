@@ -13,6 +13,8 @@ type `make` in the `examples/` directory.) It should print `Testing: PASS`.
 
 Name at least three things that an operating system is responsible for handling?
 
+1. The operating system determines which programs should run in what order and how much time should be allowed for each programs before giving another program a turn through a process scheduler. (Note - Programs are basically applications.)
+
 ## Challenge 2
 
 Write a program in C, `lsls.c`, that prints out a directory listing for the
