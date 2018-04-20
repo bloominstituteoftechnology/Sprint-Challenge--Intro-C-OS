@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <dirent.h>
 #include <stdlib.h>
-// #include <sys/stat.h>
+#include <sys/stat.h>
 
 /**
  * Main
@@ -11,7 +11,7 @@ int main(int argc, char **argv)
   // Parse command line
   DIR *dir;
   struct dirent *dp;
-  // struct stat buf;
+  struct stat buf;
   char *path;
 
   for (int i = 0; i < argc; i++) {
@@ -25,12 +25,14 @@ int main(int argc, char **argv)
       // Open directory
       dir = opendir(path);
 
-      // Repeatly read and print entries
       if (dir != NULL) {
         printf("Path: < %s >\n", path);
 
+        // Repeatly read and print entries
         while ((dp = readdir(dir)) != NULL) {
-          printf("%s\n", dp->d_name);
+          // printf("%s\n", dp->d_name);
+          stat(dp->d_name, &buf);
+          printf("%lld %s\n", buf.st_size, dp->d_name);
         }
       } else {
         printf("Path: < %s > not found.\n", path);
