@@ -32,14 +32,14 @@ void print_dirs(DIR *d, char dir[]) {
  */
 int main(int argc, char **argv)
 {
-  DIR *d = opendir(argv[1] ? argv[1] : ".");
+  DIR *d = opendir(argv[1] ? : ".");
 
   if (argc) { // avoids compiler warnings for unused var
     if (errno != 0) {
       printf("Error: %s\n", strerror(errno));
       exit(errno);
     } else {
-      print_dirs(d, argv[1] ? argv[1] : ".");
+      print_dirs(d, argv[1] ? : ".");
     }
     return 0;
   }
