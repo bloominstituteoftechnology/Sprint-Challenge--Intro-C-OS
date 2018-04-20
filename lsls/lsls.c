@@ -18,7 +18,7 @@ int main(int argc, char **argv)
     args = argv[d];
   }
   // Open directory
-  DIR *directory = opendir("args");
+  DIR *directory = opendir(args);
   // Repeatly read and print entries
   if (directory == NULL)
   {
