@@ -35,7 +35,7 @@ int main(int argc, char **argv)
     exit(1);
   }
 
-  // Repeatly read and print entries
+  // Repeatly read and print entries. Printing file size in bytes.
   for (dent = readdir(dir); dent != NULL; dent = readdir(dir))
   {
     exists = stat(dent->d_name, &buffer);
