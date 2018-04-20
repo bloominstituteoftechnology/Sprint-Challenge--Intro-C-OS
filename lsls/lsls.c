@@ -14,7 +14,7 @@ int main(int argc, char **argv)
     while ((de = readdir(dr)) != NULL){
       printf("%s\n", de->d_name);
     }
-    closedir(dr);    
+    closedir(dr);
     return 0;
 		}
 
@@ -24,7 +24,7 @@ int main(int argc, char **argv)
 	    while ((de = readdir(dr)) != NULL){
 				printf("%s\n", de->d_name);
 	    }
-	    closedir(dr);    
+	    closedir(dr);
 	    return 0;
  		}
 }
