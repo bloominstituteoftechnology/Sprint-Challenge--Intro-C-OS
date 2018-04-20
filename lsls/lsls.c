@@ -20,6 +20,15 @@ int main(int argc, char **argv)
   // Open directory
   DIR *directory = opendir("args");
   // Repeatly read and print entries
+  if (directory == NULL)
+  {
+    perror("Empty Directory.");
+    exit(1);
+  }
+  while ((ent = readdir(directory)) != NULL)
+  {
+    printf("%s\n", ent -> d_name);
+  }
 
   // Close directory
   closedir(directory);
