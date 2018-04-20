@@ -11,10 +11,6 @@ int main(int argc, char **argv)
 
  	if(argv[1] == NULL) {
   	DIR *dr = opendir(".");
-    if (dr == NULL) {
-      printf("Could not open directory\n");
-      return 0;
-  	}
     while ((de = readdir(dr)) != NULL){
       printf("%s\n", de->d_name);
     }
