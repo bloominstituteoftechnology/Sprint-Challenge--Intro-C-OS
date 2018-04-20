@@ -26,7 +26,6 @@ int main(int argc, char **argv)
 
   // Open directory
   d = opendir(dir_arg);
-  printf("Testing: %s\n", d == NULL? "FAIL": "PASS");
 
   // Repeatly read and print entries
   while(d) {
@@ -36,8 +35,6 @@ int main(int argc, char **argv)
 
   // Close directory
   closedir(d);
-
-
 
   return 0;
 }
