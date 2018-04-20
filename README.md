@@ -12,6 +12,13 @@ type `make` in the `examples/` directory.) It should print `Testing: PASS`.
 ## Challenge 1
 
 Name at least three things that an operating system is responsible for handling?
+  Processes/Threads(Scheduling) - The OS manages the order in which process are taken care of. A process
+  might spawn more processes and the OS must handle that accordingly. Threads are similar to Process except for the fact that they must be granted access by the OS to the info the require to complete.
+
+  Memory Management - Processes run in alloccated chucks of memory. Those chunks are managed by the OS.
+
+  File Management - OS's come with a human friendly file managed that runs down to the core of the system.
+  Common file systems include FAT (windows), vFAT (windows), ext4 (linux).
 
 ## Challenge 2
 
