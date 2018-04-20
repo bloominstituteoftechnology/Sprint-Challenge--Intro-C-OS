@@ -1,18 +1,24 @@
-#include <stdio.h>
-#include <dirent.h>
 
-/**
- * Main
- */
-int main(int argc, char **argv)
-{
-  // Parse command line
+#include <dirent.h> 
+#include <stdio.h> 
 
-  // Open directory
+int main(int argc, char **argv) {
+  // printf("No. of parameters passed %d\n", argc);
+  // printf("parameter vector %s\n", argv);
+  
+  //declare variables
+  DIR *d;
+  struct dirent *ent;
 
-  // Repeatly read and print entries
+  //open dir
+  d = opendir(argv[1]);
 
-  // Close directory
-
-  return 0;
+  //loop through directory contents
+  if (d) {
+    while ((ent = readdir(d)) != NULL) {
+      printf("%s\n", ent->d_name);
+    }
+    closedir(d);
+  }
+  return(0);
 }
