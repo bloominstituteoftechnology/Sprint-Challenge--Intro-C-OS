@@ -17,7 +17,6 @@ int main(int argc, char **argv)
     }
 
   // Open directory
-  int len;
   struct dirent *ent;
   DIR *pDir;
 
