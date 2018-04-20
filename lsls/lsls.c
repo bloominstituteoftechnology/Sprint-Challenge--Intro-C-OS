@@ -3,33 +3,44 @@
 #include <errno.h>
 #include <string.h>
 #include <stdlib.h>
+#include <sys/stat.h>
+
+// Helper function because this was becoming a mess inside main()
+void print_dirs(DIR *d, char dir[]) {
+  struct dirent *ent;
+  struct stat buf;
+  char path[256];
+  ent = readdir(d);
+
+  while ((ent = readdir(d)) != NULL) {
+    sprintf(path, "%s/%s", dir, ent->d_name);
+    stat(path, &buf);
+
+    if ((buf.st_mode & S_IFDIR) != 0) {
+      printf("<DIR> %s\n", ent->d_name);
+    } else if ((buf.st_mode & S_IFREG) != 0) {
+      printf("%10ld %s\n", buf.st_size, ent->d_name);
+    } else {
+      printf("%s\n", ent->d_name);
+    }
+  }
+  closedir(d);
+}
 
 /**
  * Main
  */
 int main(int argc, char **argv)
 {
-  // Parse command line
-  printf("Directory: ");
-
-  for(int i = 1; i < argc; i++) {
-    printf("%s\n", argv[i]);
-  }
-
-  // Open directory
   DIR *d = opendir(argv[1] ? argv[1] : ".");
-  struct dirent *dir;
 
-  if (errno != 0) {
-    printf("Error: %s\n", strerror(errno));
-    exit(errno);
-  } else if (d) {
-    // Repeatly read and print entries
-    while ((dir = readdir(d)) != NULL) {
-      printf("%s\n", dir->d_name);
+  if (argc) { // avoids compiler warnings for unused var
+    if (errno != 0) {
+      printf("Error: %s\n", strerror(errno));
+      exit(errno);
+    } else {
+      print_dirs(d, argv[1] ? argv[1] : ".");
     }
-    // Close directory
-    closedir(d);
+    return 0;
   }
-  return 0;
 }
