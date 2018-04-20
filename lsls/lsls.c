@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <dirent.h>
 #include <errno.h>
+#include <sys/stat.h>
 
 static void lookup(const char *arg)
 {
@@ -22,7 +23,9 @@ int main(int argc, char **argv)
 		d = opendir(".");
 		while((dir = readdir(d)) != NULL)
 		{
-			printf("%s\n", dir->d_name);
+			struct stat buf;
+			stat(dir->d_name, &buf);
+			printf("%10lld  " "%s\n", buf.st_size, dir->d_name);
 		}
 		closedir(d);
 	}
@@ -36,11 +39,9 @@ int main(int argc, char **argv)
 		d = opendir(argv[1]);
 		while ((dir = readdir(d)) != NULL)
 		{
-/*			if (!dir->d_name) {
-				printf("No such directory as  %s\n", argv[1]);
-				} 
-*/
-			printf("%s\n", dir->d_name);
+			struct stat buf;
+			stat(dir->d_name, &buf);
+			printf("%10lld  " "%s\n", buf.st_size, dir->d_name);
 		}
 		closedir(d);
 	}
