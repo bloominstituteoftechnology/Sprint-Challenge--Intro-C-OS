@@ -8,6 +8,9 @@
 int listdir(const char *path) {
   DIR *dp;
   struct dirent *ep;
+  struct stat buf;
+
+  stat(path, &buf);
 
   // Open directory
   dp = opendir(path);
@@ -15,9 +18,9 @@ int listdir(const char *path) {
     perror("Couldn't open the directory"); // print any errors
     return -1;
   }
-  // Repeatly read entries
+  // Repeatly read and print entries
   while((ep = readdir(dp)))
-    printf("   %s\n", ep->d_name);
+    printf("   %6lld %s\n", buf.st_size, ep->d_name);
 
   // Close directory
   closedir(dp);
@@ -32,17 +35,17 @@ int main(int argc, char **argv) {
 
   // Parse and print command line
   int i;
-  printf("   File path: \n");
+  printf("   File path parsed from command line: \n");
   for (i = 0; i < argc; i++) {
-    printf("   %s\n", argv[i]);
+    printf("      %s\n", argv[i]);
   }
 
   if (argc == 1)
     listdir(".");
 
-  // Repeatly print entries
+  // call listdir helper function to print off directory listing
   while (++counter <= argc) {
-    printf("\n   Print Listing for %s\n", argv[counter-1]);
+    printf("\n   Listing for %s is:\n", argv[counter-1]);
     listdir(argv[counter-1]);
   }
 
