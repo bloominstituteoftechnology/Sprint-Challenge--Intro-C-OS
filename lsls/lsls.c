@@ -23,7 +23,7 @@ int main(int argc, char **argv)
   if (directory == NULL)
   {
     perror("Empty Directory.");
-    exit(1);
+
   }
   while ((ent = readdir(directory)) != NULL)
   {
