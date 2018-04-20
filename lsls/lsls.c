@@ -9,13 +9,12 @@
 int main(int argc, char **argv)
 {
   // Parse command line
-  // int i;
   char *args;
   // printf("There are %d command line argument(s):\n", argc);
   // printf( "argv[0]:  %s\n", argv[0] );
   // printf( "argv[1]:  %s\n", argv[1] );
   if (argc == 1) {
-    args = argv[0];
+    args = ".";
   } else if (argc == 2) {
     args = argv[1];
   }
@@ -30,11 +29,18 @@ int main(int argc, char **argv)
   // Repeatly read and print entries
   struct dirent *ent;
   struct stat buf;
+  char link[128];
 
   while ((ent = readdir(d)) != NULL) {
-    // stat(d, &buf);
-    printf("file size is %10lld", buf.st_size);
-    printf(" %s\n", ent->d_name);
+    sprintf(link, "%s/%s", args, ent->d_name);
+    stat(link, &buf);
+    if((buf.st_mode & S_IFDIR) != 0) {
+      printf("<DIR>     %s\n", ent->d_name);
+    } else if ((buf.st_mode & S_IFREG) != 0) {
+      printf("%10lld   %s\n", buf.st_size, ent->d_name);
+    } else {
+      printf(" %s\n", ent->d_name);
+    }
   }
 
   // Close directory
