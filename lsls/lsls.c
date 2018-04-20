@@ -21,7 +21,18 @@ int main(int argc, char **argv)
   DIR *dir;
   struct dirent *dent;
 
-  dir = opendir(".");
+  if (argc == 1)
+  {
+    dir = opendir(".");
+  }
+  else
+  {
+    while (argv[1][0] == '/')
+    {
+      argv[1]++;
+    }
+    dir = opendir(argv[1]);
+  }
 
   if (dir == NULL)
   {
