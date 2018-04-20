@@ -1,0 +1,3 @@
+- Manage hardware resources.
+- Acts like a facilitator or a manager for application software.
+- Provide user interface.
