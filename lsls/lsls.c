@@ -6,18 +6,19 @@
  * Main
  */
 int main(int argc, char **argv) {
-  // DIR *dir;
-  // struct dirent *entry;
 
-  // if ((dir = opendir(argv[argc])) == NULL)
-  //   perror("opendir() error");
-  // else {
-  //   puts("contents of root:");
-  //   while ((entry = readdir(dir)) != NULL) {
-  //     printf("  %s\n", entry->d_name);
-  //   }
-  //   closedir(dir);
-  // }
+  DIR *dir;
+  struct dirent *entry;
+  dir = opendir(argv[1]);
+  if (dir != NULL) {
+    while ((entry = readdir(dir)) != NULL) {
+      printf("  %s\n", entry->d_name);
+    }
+    closedir(dir);
+  }
+  else {
+    perror("opendir() error");
+  }
 
   // Parse command line
 
