@@ -8,8 +8,8 @@ static void lookup(const char *arg)
 	// struct dirent *dp;
 
 	if ((dirp = opendir(arg)) == NULL) {
-		perror("no such directory");
-	}
+		perror("ERROR"); 
+	} 
 }
 /**
  * Main
@@ -28,6 +28,9 @@ int main(int argc, char **argv)
 	}
 	if (argc == 2){
 		lookup(argv[1]);
+		if (errno != 0) {
+			return 0;
+		}
 		DIR *d;
 		struct dirent *dir;
 		d = opendir(argv[1]);
