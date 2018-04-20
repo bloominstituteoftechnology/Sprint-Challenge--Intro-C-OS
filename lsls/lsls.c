@@ -35,12 +35,12 @@ int main(int argc, char **argv)
     exit(1);
   }
 
-  // Repeatly read and print entries. 
-  
-  // Printing file size in bytes. 
-  
+  // Repeatly read and print entries.
+
+  // Printing file size in bytes.
+
   //Marking directories.
-  
+
   for (dent = readdir(dir); dent != NULL; dent = readdir(dir))
   {
     exists = stat(dent->d_name, &buffer);
@@ -52,9 +52,13 @@ int main(int argc, char **argv)
     {
       printf("<DIR> %s \n", dent->d_name);
     }
+    else if ((buffer.st_mode & S_IFREG) > 0)
+    {
+      printf("<REG> %s \n", dent->d_name);
+    }
     else
     {
-      printf("%lld %s \n", buffer.st_size,dent->d_name);
+      printf("%lld %s \n", buffer.st_size, dent->d_name);
     }
   }
 
