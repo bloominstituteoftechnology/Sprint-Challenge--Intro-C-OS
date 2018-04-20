@@ -1,2 +1,3 @@
 Name at least three things that an operating system is responsible for handling?
 
+ * The purpose of an OS is to simplify a user's interaction with a computer. Thus, it is responsible for handling things like process scheduling, which involves distributing available CPU power/resources across multiple processes. It is also responsible for bridging the gap between hardware and software, for which it uses drivers (generally written in assembly language). Another thing the OS handles is memory allocation, which it will free up and distribute according to the needs of the software and hardware.
