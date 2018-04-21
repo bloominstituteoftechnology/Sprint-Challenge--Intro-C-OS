@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <dirent.h>
+#include <stdlib.h>
 #include <sys/stat.h>
 
 /**
@@ -23,7 +24,7 @@ int main(int argc, char **argv)
   dir = opendir(dir_arg);
   if (dir == NULL) {
     printf("There was an error reading that directory\n");
-    return 0;
+    exit(0);
   }
   
   // Repeatly read and print entries
@@ -34,7 +35,7 @@ int main(int argc, char **argv)
       sprintf(fullpath, "%s/%s", dir_arg, file_name);
       stat(fullpath, &buff);
       if ((buff.st_mode & S_IFDIR) != 0) {
-        printf("          <DIR> | %s/\n", file_name);
+        printf("%15s | %s/\n", "<DIR>", file_name);
       } else {
         printf("%10lldbytes | %s\n", buff.st_size, file_name);
       }
