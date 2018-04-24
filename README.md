@@ -74,7 +74,7 @@ the declarations for `DIR`, `struct dirent`, `opendir()`, `readdir()`, and
   (using the `exit()` function)._
 
 * `struct dirent *readdir(DIR *d)`: Reads the next directory entry from the
-  `DIR` returned by `opendir()`. Returns the result as a pointer to a `struct
+  `DIR*` returned by `opendir()`. Returns the result as a pointer to a `struct
   dirent` (see below). Returns `NULL` if there are no more directory entires.
 
 * `closedir(DIR *d)`: Close a directory (opened previously with `opendir()`)
