@@ -1,3 +1,5 @@
+Answers to challenge 1 below
+
 # Sprint-Challenge: Intro to C and Operating Systems
 
 Complete both challenges, below.
@@ -12,6 +14,9 @@ type `make` in the `examples/` directory.) It should print `Testing: PASS`.
 ## Challenge 1
 
 Name at least three things that an operating system is responsible for handling?
+
+- Operating systems manage the memory on the computer, manage hardware with drivers, and provide a user interface to make the operation of a computer way easier.
+
 
 ## Challenge 2
 
