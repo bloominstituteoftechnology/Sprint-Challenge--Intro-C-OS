@@ -13,6 +13,8 @@ type `make` in the `examples/` directory.) It should print `Testing: PASS`.
 
 Name at least three things that an operating system is responsible for handling?
 
+- The operating system is responsible for communicating between the software and the hardware of the computer. For example, often times the programs only have access to the RAM in terms of memory and storage. If a piece of software wants to store something on the disk, that action is typically handled by the OS instead of the program having direct access to the memory. Operating systems are also responsible for the file system of a computer. It gives you access to the files and manages them appropriately in files and libraries. A third function of the operating system is the communication of peripherals with the computer. When you plug in a mouse, graphics card, or other device into a bus on the motherboard the operating system communicates with the peripheral via drivers. The driver software tells the computer how to handle the device and get the proper results. The operating system deciphers the assembly language of the driver and communicates that to the rest of the system. 
+
 ## Challenge 2
 
 Write a program in C, `lsls.c`, that prints out a directory listing for the
