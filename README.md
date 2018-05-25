@@ -12,6 +12,9 @@ type `make` in the `examples/` directory.) It should print `Testing: PASS`.
 ## Challenge 1
 
 Name at least three things that an operating system is responsible for handling?
+* CPU Time Management - this task is called "Scheduling".
+* Translating instructions from software to the hardware level ("Drivers").
+* Managing execution/permissions for all other software.
 
 ## Challenge 2
 
