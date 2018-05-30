@@ -8,6 +8,7 @@
  */
 int main(void)
 {
+  printf("It Works!");
   DIR *d = opendir(".");
   printf("Testing: %s\n", d == NULL? "FAIL": "PASS");
   closedir(d);
