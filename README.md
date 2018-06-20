@@ -13,6 +13,10 @@ type `make` in the `examples/` directory.) It should print `Testing: PASS`.
 
 Name at least three things that an operating system is responsible for handling?
 
+1. Manage the computer's resources, such as the CPU, memory, disk drives, and printers.
+2. Establish a user interface.
+3. Execute and provides services for applications software. 
+
 ## Challenge 2
 
 Write a program in C, `lsls.c`, that prints out a directory listing for the
@@ -69,7 +73,7 @@ the declarations for `DIR`, `struct dirent`, `opendir()`, `readdir()`, and
 * `DIR *opendir(char *path)`: This function opens the directory named in `path`
   (e.g. `.`) and returns a pointer to a variable of type `DIR` that will be used
   later. If there is an error, `opendir()` returns `NULL`.
-  
+
   _You should check for errors. If there is one, print an error message and exit
   (using the `exit()` function)._
 
