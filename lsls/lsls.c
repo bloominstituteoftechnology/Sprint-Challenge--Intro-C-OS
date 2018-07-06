@@ -1,18 +1,37 @@
 #include <stdio.h>
+#include <stdlib.h>  //strtol
 #include <dirent.h>
+#include <sys/stat.h>
+ 
+int main(int argc, char *argv[]) {
+    struct dirent *directoryEntry;  // Pointer for directory entry
+    DIR *directoryName; // opendir() returns a pointer of DIR type. 
+    struct stat buf;
 
-/**
- * Main
- */
-int main(int argc, char **argv)
-{
-  // Parse command line
+    // If no arguments set directory to "."
+    // If argument provided, set directory to argument
+    if (argc < 2) {
+      directoryName = opendir(".");
+      printf("\nDirectory Name = %s\n", argv[0]);
+    } else {
+      directoryName = opendir(argv[1]);
+      printf("\nDirectory Name = %s\n", argv[1]);
+    }
 
-  // Open directory
+    while ((directoryEntry = readdir(directoryName)) != NULL) {
+            char * nameRef = directoryEntry->d_name;
+            stat(nameRef, &buf);
+            int * nameSize = buf.st_size;
 
-  // Repeatly read and print entries
-
-  // Close directory
-
-  return 0;
+            if (nameSize == 4096) {
+              printf( "      <DIR>  %s\n", nameRef);
+            } else {
+              printf( "%10lld B  %s\n", nameSize, nameRef);
+            }
+            
+            
+    }
+ 
+    closedir(directoryName);    
+    return 0;
 }
