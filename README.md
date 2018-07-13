@@ -13,6 +13,10 @@ type `make` in the `examples/` directory.) It should print `Testing: PASS`.
 
 Name at least three things that an operating system is responsible for handling?
 
+1. Memory management
+2. Process management
+3. File system management
+
 ## Challenge 2
 
 Write a program in C, `lsls.c`, that prints out a directory listing for the
