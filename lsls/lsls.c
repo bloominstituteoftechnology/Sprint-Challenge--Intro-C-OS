@@ -26,23 +26,32 @@ int main(int argc, char **argv)
   DIR *directory = opendir(path);
   // Repeatly read and print entries
   if(directory){
+
     struct stat buffer;
     struct dirent *entry = readdir(directory);
+
     while(entry){
+
       char *size_path = strcat(strcat(path, "/"), entry->d_name);
       int rc = stat(size_path, &buffer);
+
       if(rc == -1){
         printf("Error getting file stats\n");
         exit(1);
+        
       }
+
       S_ISDIR(buffer.st_mode) ? printf("%10s ", "<DIR>") : printf("%10lld ", buffer.st_size);
       printf("%s\n", entry->d_name);
       entry = readdir(directory);
+
     }
   }
   else{
+
     printf("Error opening directory\n");
     exit(1);
+
   }
 
 
