@@ -1,14 +1,27 @@
 #include <stdio.h>
 #include <dirent.h>
+#include <stdlib.h>
 
 /**
  * Main
  */
 int main(int argc, char **argv)
 {
-  // Parse command line
+  // Parse command line and Open directory
 
-  // Open directory
+  DIR *directory; // initialize a pointer for the directory that's DIR type
+
+  if (argc == 2) {
+    directory = opendir(argv[1]);
+  } else {
+    printf("Please enter: './lsls <directory_name>'\n");
+    exit(1);
+  }
+
+  if (directory == NULL) {
+    fprintf(stderr, "This directory doesn't exist.\n");
+    exit(1);
+  };
 
   // Repeatly read and print entries
 
