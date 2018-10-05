@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <dirent.h>
-
+#include <stdlib.h>
 
 /**
  * Main
@@ -18,7 +18,7 @@ int main(int argc, char **argv)
 
     // Open directory
   DIR * d;
-    struct dirent * dir;  // Pointer for directory entry
+    struct dirent * dir_entry;  // Pointer for directory entry
     if (argc == 1) {
         d = opendir(".");   // opendir() returns a pointer of DIR type
     } else {
@@ -32,11 +32,11 @@ int main(int argc, char **argv)
     }
     // Repeatly read and print entries.
     //returns a pointer to a structure representing the directory entry at the current position
-    dir = readdir(d);
+    dir_entry = readdir(d);
 
-    while (dir != NULL) {
-      printf ("%s\n", dir->d_name);
-      dir = readdir(d);
+    while (dir_entry != NULL) {
+      printf ("%s\n", dir_entry->d_name);
+      dir_entry = readdir(d);
     }
 
     // Close directory
