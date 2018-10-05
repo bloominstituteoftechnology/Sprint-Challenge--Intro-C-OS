@@ -1,18 +1,31 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <dirent.h>
 
-/**
- * Main
- */
 int main(int argc, char **argv)
 {
-  // Parse command line
+  struct dirent *directory_struct;
+  DIR *directory;
 
-  // Open directory
+  if (argc < 2) {
+    directory = opendir(".");
+  } else {
+    directory = opendir(argv[1]);
+  }
 
-  // Repeatly read and print entries
+  if (directory == NULL) {
+    printf ("Directory '%s' can't be opened.\n", argv[1]);
+    exit(1);
+  }
 
-  // Close directory
+  directory_struct = readdir(directory);
+
+  while (directory_struct != NULL) {
+    printf ("[%s]\n", directory_struct->d_name);
+    directory_struct = readdir(directory);
+  }
+
+  closedir(directory);
 
   return 0;
 }
