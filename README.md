@@ -12,6 +12,9 @@ type `make` in the `examples/` directory.) It should print `Testing: PASS`.
 ## Challenge 1
 
 Name at least three things that an operating system is responsible for handling?
+******\******* Answer ******\*******
+
+> > > Some of the responsibility Operating System handle are, system call interface, scheduling, Process and Memory managment
 
 ## Challenge 2
 
@@ -66,19 +69,18 @@ You will be using functionality included in `<dirent.h>`. This header file holds
 the declarations for `DIR`, `struct dirent`, `opendir()`, `readdir()`, and
 `closedir()`, below.
 
-* `DIR *opendir(char *path)`: This function opens the directory named in `path`
-  (e.g. `.`) and returns a pointer to a variable of type `DIR` that will be used
-  later. If there is an error, `opendir()` returns `NULL`.
-  
-  _You should check for errors. If there is one, print an error message and exit
-  (using the `exit()` function)._
+-   `DIR *opendir(char *path)`: This function opens the directory named in `path`
+    (e.g. `.`) and returns a pointer to a variable of type `DIR` that will be used
+    later. If there is an error, `opendir()` returns `NULL`.
 
-* `struct dirent *readdir(DIR *d)`: Reads the next directory entry from the
-  `DIR*` returned by `opendir()`. Returns the result as a pointer to a `struct
-  dirent` (see below). Returns `NULL` if there are no more directory entires.
+    _You should check for errors. If there is one, print an error message and exit
+    (using the `exit()` function)._
 
-* `closedir(DIR *d)`: Close a directory (opened previously with `opendir()`)
-  when you're done with it.
+-   `struct dirent *readdir(DIR *d)`: Reads the next directory entry from the
+    `DIR*` returned by `opendir()`. Returns the result as a pointer to a `struct dirent` (see below). Returns `NULL` if there are no more directory entires.
+
+-   `closedir(DIR *d)`: Close a directory (opened previously with `opendir()`)
+    when you're done with it.
 
 The `struct dirent *` returned by `readdir()` has the following fields in it:
 
@@ -128,20 +130,20 @@ $ ./lsls
 
 You'll need to use the `stat()` call in `<sys/stat.h>`.
 
-* `int stat(char *fullpath, struct stat *buf)`: For a given full path to a file
-  (i.e. the path passed to `opendir()` following by a `/` followed by the name
-  of the file in `d_name`), fill the fields of a `struct stat` that you've
-  pointed to. Returns `-1` on error.
+-   `int stat(char *fullpath, struct stat *buf)`: For a given full path to a file
+    (i.e. the path passed to `opendir()` following by a `/` followed by the name
+    of the file in `d_name`), fill the fields of a `struct stat` that you've
+    pointed to. Returns `-1` on error.
 
-  ```c
-  // Example stat() usage
+    ```c
+    // Example stat() usage
 
-  struct stat buf;
+    struct stat buf;
 
-  stat("./lsls.c", &buf);
+    stat("./lsls.c", &buf);
 
-  printf("file size is %lld\n", buf.st_size);
-  ```
+    printf("file size is %lld\n", buf.st_size);
+    ```
 
 ### Stretch Goal: Mark Directories
 
