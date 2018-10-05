@@ -23,9 +23,15 @@ int main(int argc, char **argv)
     exit(1);
   };
 
-  // Repeatly read and print entries
+  // Repeatly read and print entries and Close directory
 
-  // Close directory
+  struct dirent *dir; // initialize a struct for the dir that's dirent type
+
+  while ((dir = readdir(directory))) {
+    printf("%s\n", dir->d_name);
+  }
+
+  closedir(directory);
 
   return 0;
 }
