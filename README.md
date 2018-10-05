@@ -1,3 +1,12 @@
+ANSWER:
+
+1. Manages hardware resources
+2. Allows communication between hardware and system.
+3. Provides interface to user.
+
+
+
+
 # Sprint-Challenge: Intro to C and Operating Systems
 
 Complete both challenges, below.
