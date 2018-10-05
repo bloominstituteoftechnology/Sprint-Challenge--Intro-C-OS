@@ -13,6 +13,7 @@ int main(int argc, char **argv)
   DIR *dir;
   struct dirent *ent;
   struct stat buf;
+  char dirname[8192];
 
   // Parse command line
   if (argc < 1)
@@ -27,6 +28,7 @@ int main(int argc, char **argv)
       perror("Cannot open ./");
       exit(1);
     }
+    strcpy(dirname, "./");
   }
   else
   {
@@ -38,6 +40,7 @@ int main(int argc, char **argv)
       perror(errMsg);
       exit(1);
     }
+    strcpy(dirname, argv[1]);
   }
 
   // Repeatedly read and print entries
@@ -45,7 +48,7 @@ int main(int argc, char **argv)
   {
     // need full path for stat
     char path[8192];
-    snprintf(path, sizeof(path), "%s/%s", argv[1], ent->d_name);
+    snprintf(path, sizeof(path), "%s/%s", dirname, ent->d_name);
 
     // get the file info
     stat(path, &buf);
