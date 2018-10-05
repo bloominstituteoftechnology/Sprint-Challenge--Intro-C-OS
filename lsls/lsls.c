@@ -4,22 +4,24 @@
 #include <sys/stat.h> // For struct stat
 #include <string.h> // For strcat()
 
+# define MAX_INPUT 256
+
 /**
  * Main
  */
 int main(int argc, char **argv)
 {
-  char *path;
+  char path[MAX_INPUT];
 
   // Parse command line
   if(argc > 1){
-    path = argv[1];
+    strcpy(path, argv[1]);
   }
   else{
-    path = ".";
+    strcpy(path, ".");
   }
 
-
+  printf("path: %s", path);
   // Open directory
   DIR *directory = opendir(path);
   // Repeatly read and print entries
