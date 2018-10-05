@@ -1,14 +1,14 @@
 #include <stdio.h>
 #include <dirent.h>
 
+
 /**
  * Main
  */
 int main(int argc, char **argv)
 {
-  // Parse command line
-
-		int i;
+    // Parse command line
+    int i;
 
     printf("There are %d command line argument(s):\n", argc);
 
@@ -16,12 +16,31 @@ int main(int argc, char **argv)
         printf("   %s\n", argv[i]);
     }
 
+    // Open directory
+  DIR * d;
+    struct dirent * dir;  // Pointer for directory entry
+    if (argc == 1) {
+        d = opendir(".");   // opendir() returns a pointer of DIR type
+    } else {
+        d = opendir(argv[1]);
+    }
 
-  // Open directory
+    if (d == NULL) //opendir returns NULL if couldn't open directory
+    {
+        printf ("This %s directory cannot be opened.\n", argv[1]);
+        exit(1);
+    }
+    // Repeatly read and print entries.
+    //returns a pointer to a structure representing the directory entry at the current position
+    dir = readdir(d);
 
-  // Repeatly read and print entries
+    while (dir != NULL) {
+      printf ("%s\n", dir->d_name);
+      dir = readdir(d);
+    }
 
-  // Close directory
+    // Close directory
+    closedir(d);
 
-  return 0;
+    return 0;
 }
