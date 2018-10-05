@@ -1,7 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <dirent.h>
+#include <sys/types.h>
 #include <sys/stat.h>
+#include <unistd.h>
 #include <errno.h>
 
 /**
@@ -20,19 +22,30 @@ int main(int argc, char **argv)
   DIR *d = opendir(*path);
   // Checks for errors
   if (d == NULL) {
-    printf("\033[31merror\033[37m: no such file or directory\n");
+    printf("\033[1;31merror\033[0m\033[1m: no such file or directory\033[0m\n");
     return 0;
   }
   // Repeatly read and print entries
   struct dirent *id;
-  struct stat buf;
 
   while ((id = readdir(d)) != NULL) {
-    stat(id->d_name, &buf);
-    if (stat(id->d_name, &buf) == -1) {
+    struct stat buf;
+    char fullpath[8192];
+    sprintf(fullpath, "%s/%s", *path, id->d_name);
+
+    if (stat(fullpath, &buf) == -1) {
       perror("stat");
     }
-    printf("%5lld   %s\n", buf.st_size, id->d_name);
+
+    if (buf.st_mode & S_IFREG) {
+      printf("%5lld   %s\n", buf.st_size, id->d_name);
+
+    } else if (buf.st_mode & S_IFDIR) {
+
+      printf("%5s   %s\n", "<DIR>", id->d_name);
+    } else {
+      printf("%5s   %s\n", "", id->d_name);
+    }
   }
   // Close directory
   closedir(d);
