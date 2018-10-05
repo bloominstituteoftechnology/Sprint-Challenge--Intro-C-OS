@@ -9,9 +9,21 @@ int main(int argc, char **argv)
   DIR *dir;
   struct dirent *entry;
 
-  if ((dir = opendir(".")) == NULL)
+  printf("argc: %d\n", argc);
+  printf("argv[1]: %s\n", argv[1]);
+
+  if (argv[1] != NULL)
   {
-    fprintf(stderr, "unable to open dir");
+    dir = opendir(argv[1]);
+  }
+  else
+  {
+    dir = opendir(".");
+  }
+
+  if (dir == NULL)
+  {
+    fprintf(stderr, "unable to open dir\n");
   }
   else
   {
