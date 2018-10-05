@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <dirent.h>
+#include <sys/stat.h>
 
 /**
  * Main
@@ -13,22 +14,17 @@ int main(int argc, char **argv)
 
     // argc is the number of arguments entered into command line
     // **argv is the pointer to the address of the argument string?
-    // printf("There are %d command line argument(s):\n", argc);
-    // printf("argv is : %d", argv);
 
     for (i = 0; i < argc; i++) {
-        // printf("   %s\n", argv[i]);
         args = argv[i];
-
     }
-
-    // return 0;
-
 
     // Open directory
 
     DIR *dir = opendir(args);
     struct dirent *dp;
+    struct stat buf;
+    stat(args, &buf);
 
     if (dir == NULL) {
         perror ("Cannot open .");
@@ -38,13 +34,13 @@ int main(int argc, char **argv)
     // Repeatly read and print entries
 
     while ((dp = readdir (dir)) != NULL) {
+        printf("%10lld  ", buf.st_size);
         printf("%s\n", dp->d_name);
     }
 
     // Close directory
 
     closedir(dir);
-    // printf("Directory closed.");
 
     return 0;
 }
