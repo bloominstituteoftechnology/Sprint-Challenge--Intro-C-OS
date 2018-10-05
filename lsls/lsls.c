@@ -1,13 +1,13 @@
 #include <stdio.h>
 #include <dirent.h>
+#include <stdlib.h> 
+#include <sys/stat.h>
 
-/**
- * Main
- */
+
 int main(int argc, char **argv)
 {
-  // Parse command line
   struct dirent *ent;
+  struct stat buf;
 
   int count;
   printf("There are %d command line argument(s):\n", argc);
@@ -15,26 +15,31 @@ int main(int argc, char **argv)
     puts(argv[count]);
   }
 
-  // Open directory
   if (count < 2){
     DIR *dr = opendir(".");
     while((ent = readdir(dr)) != NULL){
       printf("%s\n", ent->d_name);
     }
-  // Close directory
+
     closedir(dr);
   }
 
   else{
     DIR *dr = opendir(argv[1]);
-  // Repeatly read and print entries
+
+    if(dr == NULL){
+      fprintf(stderr, "Error: Could not open directory");
+      exit(1);
+    }
+
   while((ent = readdir(dr)) != NULL){
+    stat(argv[1], &buf);
+    printf("%10lld", buf.st_size);
     printf("%s\n", ent->d_name);
   }
-  // Close directory
+
   closedir(dr);
 }
   
-
   return 0;
 }
