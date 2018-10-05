@@ -1,18 +1,45 @@
 #include <stdio.h>
 #include <dirent.h>
+#include <sys/stat.h>
 
 /**
  * Main
  */
 int main(int argc, char **argv)
 {
-  // Parse command line
-
+  DIR *dir;
+  struct dirent *entry;
+  struct stat buf;
   // Open directory
+  dir = opendir(".");
+  // Parse command line
+  if (argc > 1)
+  {
+    dir = opendir(argv[1]);
+  }
 
-  // Repeatly read and print entries
-
-  // Close directory
+  if (dir == NULL)
+  {
+    printf("Error in opening directory!\n");
+  }
+  else
+  {
+    // Repeatly read and print entries
+    while ((entry = readdir(dir)) != NULL)
+    {
+      stat(entry->d_name, &buf);
+      if ((buf.st_mode & S_IFDIR) != 0)
+      {
+        printf("\t<DIR>  %s\n", entry->d_name);
+      }
+      else
+      {
+        printf("  %10lld   %s\n", buf.st_size, entry->d_name);
+      }
+    }
+    // Close directory
+    closedir(dir);
+  }
 
   return 0;
 }
