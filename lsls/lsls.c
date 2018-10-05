@@ -26,7 +26,14 @@ int main(int argc, char **argv)
     while ((ent = readdir(dir)) != NULL)
     {
       stat(ent->d_name, &buf);
-      printf("%ld %s\n", buf.st_size, ent->d_name);
+      if ((buf.st_mode & S_IFDIR) != 0)
+      {
+        printf("<DIR> %s\n", ent->d_name);
+      }
+      else
+      {
+        printf("%ld %s\n", buf.st_size, ent->d_name);
+      }
     }
   }
   else
