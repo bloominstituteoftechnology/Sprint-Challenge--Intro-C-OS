@@ -1,0 +1,3 @@
+1. Managing resources such as hardwares, memory, disk drives, etc... 
+2. Scheduling processes.
+3. Providing a User Interface.
