@@ -2,6 +2,7 @@
 #include <dirent.h>
 #include <string.h>
 #include <stdlib.h>
+#include <sys/stat.h>
 
 /**
  * Main
@@ -10,6 +11,7 @@ int main(int argc, char **argv)
 {
   DIR *dir;
   struct dirent *ent;
+  struct stat buf;
 
   // Parse command line
   if (argc < 1)
@@ -42,7 +44,10 @@ int main(int argc, char **argv)
 
   while (ent != NULL)
   {
-    puts(ent->d_name);
+    // puts(ent->d_name);
+    // printf("%s\n", ent->d_name);
+    stat(ent->d_name, &buf);
+    printf("%10lld %s\n", buf.st_size, ent->d_name);
     ent = readdir(dir);
   }
 
