@@ -9,7 +9,7 @@ int main(int argc, char **argv)
     // Parse command line
 
     // Open directory
-    
+
     DIR *dir = opendir(".");
     struct dirent *dp;
 
@@ -25,6 +25,9 @@ int main(int argc, char **argv)
     }
 
     // Close directory
+
+    closedir(dir);
+    // printf("Directory closed.");
 
     return 0;
 }
