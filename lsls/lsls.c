@@ -1,6 +1,11 @@
 #include <stdio.h>
 #include <dirent.h>
 #include <sys/stat.h>
+#include <stdlib.h>
+
+#define S_IFMT 0160000
+#define S_IFDIR 0040000
+#define S_IFREG 0100000 
 
 /**
  * Main
@@ -19,8 +24,8 @@ int main(int argc, char **argv)
   }
   else if(argc > 2)
   {
-    printf("Expected 0 or 1 args!\n");
-    dir = opendir(".");
+    fprintf(stderr, "Usage: %s <pathname>\n", argv[0]);
+    exit(EXIT_FAILURE);
   }
   else
   {
@@ -40,7 +45,14 @@ int main(int argc, char **argv)
   while((entry = readdir(dir)) != NULL)
   {
     stat(entry->d_name, &buf);
-    printf("%10lld  %s\n", buf.st_size, entry->d_name);
+    if((buf.st_mode & S_IFMT) == S_IFDIR)
+    {
+      printf("%10s  %s\n", "<DIR>", entry->d_name);
+    }
+    else if((buf.st_mode & S_IFMT) == S_IFREG)
+    {
+      printf("%10lld  %s\n", buf.st_size, entry->d_name);
+    }
   }
 
   // Close directory
@@ -49,8 +61,6 @@ int main(int argc, char **argv)
     perror("closedir");
     exit(1);
   }
-
-  closedir(dir);
 
   return 0;
 }
