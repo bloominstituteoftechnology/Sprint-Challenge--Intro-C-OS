@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include <sys/stat.h>
 #include <string.h>
+#include <errno.h>
 
 /**
  * Main
@@ -21,7 +22,7 @@ int main(int argc, char **argv)
         DIR *d = opendir(argv[x]);
       
         if(d == 0){
-          puts("error opening ");
+          perror("dir");
           exit(1);
         }
         ent = readdir(d);
@@ -31,12 +32,11 @@ int main(int argc, char **argv)
           strcpy(c, path);
           strcat(c, ent->d_name);
 
-          int stats = stat(c, &buf);          
-         
+          int stats = stat(c, &buf);
           if (stats >= 0){
             printf("%10lld %s\n", buf.st_size, ent->d_name);
-
           }else{
+              perror("stat");
              printf("    %s\n", ent->d_name);
           }
           ent = readdir(d);
