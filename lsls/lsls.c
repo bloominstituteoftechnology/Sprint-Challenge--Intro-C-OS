@@ -37,14 +37,29 @@ int main(int argc, char **argv)
   // Repeatly read and print entries
   while ((pDirent = readdir(pDir)) != NULL) {    
 
+
       //Take entry and get it's absolute path using realpath and place into the path buffer
       realpath(pDirent->d_name, pathbuf);
 
       //Calculate the size of the path in path buff using state and place into the size buffer
-      stat(pathbuf, &sizebuf);
+      stat(pathbuf, &sizebuf); 
 
-      // Pring the size and the name in one line
-      printf ("%10lld %s\n", sizebuf.st_size, pDirent->d_name);
+      // Use st_mode to find out if it's a directory or file
+      if( sizebuf.st_mode & S_IFDIR ) //it's a directory
+      {
+           printf ("     <DIR> %s\n", pDirent->d_name);
+      }
+      else if( sizebuf.st_mode & S_IFREG ) //it's a file
+      {
+        // Pring the size and the name in one line
+        printf ("%10lld %s\n", sizebuf.st_size, pDirent->d_name);
+      }
+      else //something else
+      {
+        // Pring the size and the name in one line
+        printf ("%10lld %s\n", sizebuf.st_size, pDirent->d_name);
+      }      
+
   }
   
   // Close directory
