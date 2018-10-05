@@ -33,7 +33,14 @@ int main(int argc, char **argv)
 
   while ((dir = readdir(directory))) {
     stat(dir->d_name, &bytes);
-    printf("%lld %s\n", bytes.st_size, dir->d_name);
+    
+    // Mark Directories
+
+    if (S_ISDIR(bytes.st_mode)) {
+      printf("%s %s\n", "<DIR>", dir->d_name);
+    } else {
+      printf("%lld %s\n", bytes.st_size, dir->d_name);
+    }
   };
 
   // Close directory
