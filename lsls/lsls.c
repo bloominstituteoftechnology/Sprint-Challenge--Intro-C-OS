@@ -28,9 +28,9 @@ int main(int argc, char **argv)
     struct dirent *entry = readdir(directory);
     while(entry){
       char *size_path = strcat(strcat(path, "/"), entry->d_name);
-      printf("size_path: %s\n\n", size_path);
       stat(size_path, &buffer);
-      printf("%li %s\n", (intmax_t) buffer.st_size, entry->d_name);
+      S_ISDIR(buffer.st_mode) ? printf("<DIR> ") : printf("%li ", (intmax_t) buffer.st_size);
+      printf("%s\n", entry->d_name);
       entry = readdir(directory);
     }
   }
