@@ -20,10 +20,11 @@ int main(int argc, char **argv)
 	else {
 		dir = opendir(argv[1]);
 	}
-	stat(dir, &buf);
+	
 	// Repeatly read and print entries
 	while ((dp = readdir(dir)) != NULL) {
-		printf("%10ld %s\n", buf.st_size, dp->d_name);
+		stat(dp->d_name, &buf);
+		printf("%10lld %s\n", buf.st_size, dp->d_name);
 	}
 
 	// Close directory
