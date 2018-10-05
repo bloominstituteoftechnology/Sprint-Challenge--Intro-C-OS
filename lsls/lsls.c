@@ -10,7 +10,21 @@ int main(int argc, char **argv)
 
   // Open directory
   DIR *dir;
-  dir = opendir(".");
+
+  // Check command line args
+  if(argc == 2)
+  {
+    dir = opendir(argv[1]);
+  }
+  else if(argc > 2)
+  {
+    printf("Expected 0 or 1 args!\n");
+    dir = opendir(".");
+  }
+  else
+  {
+    dir = opendir(".");
+  }
 
   if(dir == NULL)
   {
@@ -23,6 +37,7 @@ int main(int argc, char **argv)
 
   while((entry = readdir(dir)) != NULL)
   {
+    if(entry->d_name[0] == ".") continue;
     printf(" %s\n", entry->d_name);
   }
 
