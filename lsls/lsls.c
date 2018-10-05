@@ -16,8 +16,10 @@ int main(int argc, char **argv)
   if (argc > 2) {
     fprintf(stderr, "%s", "Too Many Arguments, Please Try Again.\n");
     exit(-1);
-  } else if (argc == 1) {
-    directory = argv[1];
+  } else if (argc > 0) {
+    
+    directory = opendir(argv[1]);
+    printf(directory);
   } else {
     directory = opendir(".");
   }
