@@ -2,7 +2,7 @@
 #include <dirent.h>
 #include <unistd.h>
 #include <stdlib.h>
-
+#include <sys/stat.h>
 
 /**
  * Main
@@ -13,6 +13,7 @@ int main(int argc, char **argv)
   // Parse command line
   DIR *dir;
   struct dirent *ent;
+  struct stat buf;
   if (argc < 2) {
     if ((dir = opendir(".")) == NULL) {
       perror ("Error opening .");
@@ -34,7 +35,9 @@ int main(int argc, char **argv)
   printf("\nCurrent directory: \n\n");
   // Repeatly read and print entries
   while((ent = readdir(dir)) != NULL) {
-    printf("%s %d\n", ent->d_name, ent->d_ino);
+    stat("./", &buf);
+    printf("%10lld %s\n", buf.st_mode, ent->d_name);
+    // printf("%s %d\n", ent->d_name, ent->d_ino);
   }
   // Close directory
   closedir(dir);
