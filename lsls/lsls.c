@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <dirent.h>
 #include <stdlib.h>
+#include <sys/stat.h>
 
 /**
  * Main
@@ -23,13 +24,19 @@ int main(int argc, char **argv)
     exit(1);
   };
 
-  // Repeatly read and print entries and Close directory
+  // Repeatly read and print entries
+
+  // Print file size in bytes
 
   struct dirent *dir; // initialize a struct for the dir that's dirent type
+  struct stat bytes; // initialize a struct for the bytes that's stat type
 
   while ((dir = readdir(directory))) {
-    printf("%s\n", dir->d_name);
-  }
+    stat(dir->d_name, &bytes);
+    printf("%lld %s\n", bytes.st_size, dir->d_name);
+  };
+
+  // Close directory
 
   closedir(directory);
 
