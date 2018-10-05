@@ -38,13 +38,13 @@ int main(int argc, char **argv)
     }
 
     if (buf.st_mode & S_IFREG) {
-      printf("%5lld   %s\n", buf.st_size, id->d_name);
+      printf("%-5lld  %s\n", buf.st_size, id->d_name);
 
     } else if (buf.st_mode & S_IFDIR) {
 
-      printf("%5s   %s\n", "<DIR>", id->d_name);
+      printf("%-5s  %s\n", "<DIR>", id->d_name);
     } else {
-      printf("%5s   %s\n", "", id->d_name);
+      printf("%-5s  %s\n", "", id->d_name);
     }
   }
   // Close directory
