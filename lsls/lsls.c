@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <dirent.h>
+#include <sys/stat.h>
 
 /**
  * Main
@@ -8,6 +9,7 @@
 int main(int argc, char **argv)
 {
   struct dirent *ent;
+  struct stat buf;
   DIR *dir;
 
   if (argc == 1)
@@ -23,7 +25,8 @@ int main(int argc, char **argv)
   {
     while ((ent = readdir(dir)) != NULL)
     {
-      printf("%s\n", ent->d_name);
+      stat(ent->d_name, &buf);
+      printf("%ld %s\n", buf.st_size, ent->d_name);
     }
   }
   else
