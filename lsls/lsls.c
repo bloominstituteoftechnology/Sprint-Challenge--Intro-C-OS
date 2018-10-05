@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <dirent.h>
 
 /**
@@ -7,11 +8,16 @@
 int main(int argc, char **argv)
 {
   // Parse command line
-
+  char *path[50];
+  if (argc == 1) {
+		*path = ".";
+	} else {
+    *path = argv[1];
+  }
   // Open directory
-  DIR *d = opendir(".");
-  if (d == NULL) // Checks for errors
-  {
+  DIR *d = opendir(*path);
+  // Checks for errors
+  if (d == NULL) {
     printf("\033[31merror\033[37m: no such file or directory\n");
     return 0;
   }
