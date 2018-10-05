@@ -2,7 +2,7 @@
 #include <dirent.h>
 
 /**
- * Main
+  * Main
  */
 int main(int argc, char **argv)
 {
