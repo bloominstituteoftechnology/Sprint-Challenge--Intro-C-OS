@@ -3,6 +3,7 @@
 #include <string.h>
 #include <stdlib.h>
 #include <sys/stat.h>
+#include <errno.h>
 
 /**
  * Main
@@ -39,15 +40,25 @@ int main(int argc, char **argv)
     }
   }
 
-  // Repeatly read and print entries
+  // Repeatedly read and print entries
   ent = readdir(dir);
 
   while (ent != NULL)
   {
-    // get the file sizes
+    // get the file info
     stat(ent->d_name, &buf);
 
-    printf("%10lld %s\n", buf.st_size, ent->d_name);
+    if (buf.st_mode & S_IFDIR)
+    {
+      printf("%10s %s\n", "<DIR>", ent->d_name);
+    }
+    // check if a regular file
+    else if (buf.st_mode & S_IFREG)
+    {
+      printf("%10lld %s\n", buf.st_size, ent->d_name);
+    }
+
+    // coninue to next item
     ent = readdir(dir);
   }
 
