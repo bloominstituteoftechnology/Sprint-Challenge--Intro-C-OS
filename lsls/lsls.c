@@ -11,8 +11,7 @@ int main(int argc, char **argv)
     struct dirent *entries;
     DIR *dir;
 // Open directory
-    dir = opendir(".");
-    if (argc < 2) {
+    if (argc == 1) {
         dir = opendir(".");
     }
     else {
