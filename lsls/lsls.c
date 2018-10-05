@@ -12,11 +12,15 @@ int main(int argc, char *argv[])
     puts("Please use command like so: ./lsls <directory name>");
     return 0;
   }
-
-  
   // Open directory
   DIR *dir;
-  dir = opendir(argv[1]);
+  if(argc == 1) {
+    dir = opendir(".");
+  }
+  else {
+    dir = opendir(argv[1]);
+  }
+  
   // Repeatly read and print entries
   struct dirent *ent;
 
@@ -26,6 +30,9 @@ int main(int argc, char *argv[])
     }
   // Close directory
     closedir(dir);
+  }
+  else {
+    printf("Directory %s does not exist\n", argv[1]);
   }
   return 0;
 }
