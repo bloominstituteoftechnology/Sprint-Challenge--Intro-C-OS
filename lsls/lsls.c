@@ -41,12 +41,14 @@ int main(int argc, char **argv)
   }
 
   // Repeatedly read and print entries
-  ent = readdir(dir);
-
-  while (ent != NULL)
+  while ((ent = readdir(dir)) != NULL)
   {
+    // need full path for stat
+    char path[8192];
+    snprintf(path, sizeof(path), "%s/%s", argv[1], ent->d_name);
+
     // get the file info
-    stat(ent->d_name, &buf);
+    stat(path, &buf);
 
     if (buf.st_mode & S_IFDIR)
     {
@@ -57,9 +59,6 @@ int main(int argc, char **argv)
     {
       printf("%10lld %s\n", buf.st_size, ent->d_name);
     }
-
-    // coninue to next item
-    ent = readdir(dir);
   }
 
   // Close directory
