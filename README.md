@@ -13,6 +13,10 @@ type `make` in the `examples/` directory.) It should print `Testing: PASS`.
 
 Name at least three things that an operating system is responsible for handling?
 
+-The interaction needed between the hardware and the software. This is taken care of so the user does not need to take hardware into account when operating their machine. Input/Output, storage, etc..
+-The OS is in charge of prioritizing processes for the hardware to complete in order to provide a seamless experience
+-The allocation of memory from the machine's RAM for these processes
+
 ## Challenge 2
 
 Write a program in C, `lsls.c`, that prints out a directory listing for the
