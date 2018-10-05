@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <dirent.h>
 
 /**
@@ -7,11 +8,15 @@
 int main(int argc, char **argv)
 {
   struct dirent *ent;
-  DIR *dir = opendir(argv[1]);
+  DIR *dir;
 
   if (argc == 1)
   {
     dir = opendir(".");
+  }
+  else
+  {
+    dir = opendir(argv[1]);
   }
 
   if (dir != NULL)
@@ -20,6 +25,11 @@ int main(int argc, char **argv)
     {
       printf("%s\n", ent->d_name);
     }
+  }
+  else
+  {
+    fprintf(stderr, "No such file or directory\n");
+    exit(1);
   }
 
   closedir(dir);
