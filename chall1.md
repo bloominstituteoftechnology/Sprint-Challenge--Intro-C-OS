@@ -1,0 +1,1 @@
+three main functions: manage resources (f/e, cpu, memory), establish UI, execute and provide services for softwares.
