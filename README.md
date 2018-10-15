@@ -1,3 +1,9 @@
+# Challenge 1 Answer:
+# 1. Managing Resources
+# 2. Providing User Interface
+# 3. Running Applications
+
+
 # Sprint-Challenge: Intro to C and Operating Systems
 
 Complete both challenges, below.
