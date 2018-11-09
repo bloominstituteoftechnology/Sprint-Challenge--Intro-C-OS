@@ -1,5 +1,5 @@
 /**
- * Try running with various command line args:
+ * Try running with various command line args: test
  *
  * ./commandline hello world
  * ./commandline this is a test
