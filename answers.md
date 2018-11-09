@@ -1,1 +1,2 @@
-An operating system is responsible for managing users, managing processes, managing file store and allocating memory.
+Q: Name at least three things that an operating system is responsible for handling?
+A: An operating system is responsible for managing users, managing processes, managing    file store and allocating memory.
