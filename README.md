@@ -1,3 +1,18 @@
+## Challenge 1
+
+Name at least three things that an operating system is responsible for handling?
+1.) Managing resources such as memory and data storage. 
+2.) Managing the User Interface.
+3.) Running applications and determining priority for CPU.
+
+
+
+
+
+
+
+
+
 # Sprint-Challenge: Intro to C and Operating Systems
 
 Complete both challenges, below.
@@ -9,9 +24,7 @@ If you want to test if your environment is set up for it, compile and run the
 [testdir.c](examples/testdir.c) program in the `examples/` directory. (You can
 type `make` in the `examples/` directory.) It should print `Testing: PASS`.
 
-## Challenge 1
 
-Name at least three things that an operating system is responsible for handling?
 
 ## Challenge 2
 
