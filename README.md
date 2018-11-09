@@ -1,6 +1,6 @@
 # Sprint-Challenge: Intro to C and Operating Systems
 
-Complete both challenges, below.
+Complete both challenges, below. 
 
 _The Challenge 2 code needs a Unix-like environment to work! That includes
 Linux, macos, Cygwin, WSL, BSD, etc._
