@@ -9,10 +9,13 @@ int main(int argc, char **argv)
   // Parse command line
 
   // Open directory
+  opendir()
 
-  // Repeatly read and print entries
+      // Repeatly read and print entries
+      readdir()
 
-  // Close directory
+      // Close directory
+      closedir()
 
-  return 0;
+          return 0;
 }
