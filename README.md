@@ -12,6 +12,9 @@ type `make` in the `examples/` directory.) It should print `Testing: PASS`.
 ## Challenge 1
 
 Name at least three things that an operating system is responsible for handling?
+  input/output of programs
+  buffer between user and hardware
+  memory allocation 
 
 ## Challenge 2
 

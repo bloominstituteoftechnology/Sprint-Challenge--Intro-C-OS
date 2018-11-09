@@ -6,13 +6,20 @@
  */
 int main(int argc, char **argv)
 {
-  // Parse command line
-
-  // Open directory
-
-  // Repeatly read and print entries
-
-  // Close directory
-
+   struct dirent *d;
+  DIR *open;
+  open = opendir(argv[1]);
+  if (argc < 2) {
+    open = opendir(".");
+  }
+  if (open == NULL){
+    printf("cannot open directory: %s\n", argv[1]);
+    return 1;
+  }
+  while ((d = readdir(open)) != NULL) {
+    printf("%s\n", d->d_name);
+  }
+  closedir(open);
   return 0;
+
 }
