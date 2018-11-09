@@ -13,6 +13,22 @@ int main(int argc, char **argv)
   // Repeatly read and print entries
 
   // Close directory
+  struct dirent *de;  // Pointer for directory entry 
+
+  // opendir() returns a pointer of DIR type.  
+  DIR *dr = opendir("."); 
+
+  if (dr == NULL)  // opendir returns NULL if couldn't open directory 
+  { 
+      printf("Could not open current directory\n" ); 
+      return 0; 
+  } 
+
+  while ((de = readdir(dr)) != NULL) 
+          printf("%s\n", de->d_name); 
+
+  printf("end of directory \n");
+  closedir(dr);  
 
   return 0;
 }
