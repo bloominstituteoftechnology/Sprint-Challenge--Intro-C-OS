@@ -21,13 +21,13 @@ int main(int argc, char **argv)
   DIR *d;
   struct dirent *dp;
 
-  d = opendir(".");
+  d = opendir(argv[1]);
   // Repeatly read and print entries
   if(d == NULL){
     printf("Cannot open does not exist.\n");
     exit(1);
   }
-  while ((dp = readdir(d)) != NULL){
+  while ((dp = readdir(d)) != '\0'){
     printf("directory item: %s\n", dp -> d_name);
   }
   // Close directory
