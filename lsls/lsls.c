@@ -6,7 +6,16 @@
  */
 int main(int argc, char **argv)
 {
+  int main(int argc, char **argv)
+{
   // Parse command line
+  DIR *dir;
+  struct dirent *pDirent;
+
+  if (argc < 2)
+  {
+    printf("Usage: print <dirname>\n");
+  }
 
   // Open directory
 
