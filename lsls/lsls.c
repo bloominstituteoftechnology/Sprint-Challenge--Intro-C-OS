@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <dirent.h>
-#include <libgen.h>
 #include <sys/types.h>
+#include <stdlib.h>
 
 /**
  * Main
@@ -19,12 +19,15 @@ int main(int argc, char **argv)
   // Open directory
   DIR *d;
   struct dirent *dp;
+
+  d = opendir(".");
   // Repeatly read and print entries
-  if((d = opendir("."))==NULL){
-    perror("Cannot open .");
+  if(d == NULL){
+    perror("Cannot open does not exist.\n");
+    exit(1);
   }
   while ((dp = readdir (d)) != NULL){
-    printf("  %s\n", argv[i]);
+    printf("%s\n", dp -> d_name);
   }
   // Close directory
   closedir(d);
