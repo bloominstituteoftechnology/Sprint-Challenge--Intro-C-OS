@@ -9,7 +9,9 @@ int main(int argc, char **argv)
   
   DIR *directory;
   struct dirent *entry;
-  char currentDirectory[1024];
+  // Declaring buffer with a size that the compiler can compute
+  #define BUFSIZE 1024
+  char currentDirectory[BUFSIZE];
   
   // Parse command line
  if (argc > 1) {
@@ -35,7 +37,8 @@ int main(int argc, char **argv)
       without a terminating null byte. */
 
       struct stat st;
-      char type[1024];
+      // Declaring buffer with a size that the compiler can compute
+      char type[BUFSIZE];
       stat(entry->d_name, &st);
       long size = st.st_size;
       
