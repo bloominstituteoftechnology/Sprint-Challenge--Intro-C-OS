@@ -14,7 +14,7 @@ int main(int argc, char **argv)
     strcpy(direc, argv[1]);
   } else {
     printf("what?");
-    strcpy(direc, default_dir);
+    direc[0] = '.';
   }
   d = opendir(direc);
 
