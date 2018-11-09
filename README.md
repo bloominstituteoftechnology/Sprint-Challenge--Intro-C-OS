@@ -8,7 +8,7 @@ Linux, macos, Cygwin, WSL, BSD, etc._
 If you want to test if your environment is set up for it, compile and run the
 [testdir.c](examples/testdir.c) program in the `examples/` directory. (You can
 type `make` in the `examples/` directory.) It should print `Testing: PASS`.
-
+- For PR
 ## Challenge 1
 
 Name at least three things that an operating system is responsible for handling?
