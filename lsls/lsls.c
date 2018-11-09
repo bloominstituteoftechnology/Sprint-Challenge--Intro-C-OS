@@ -11,15 +11,21 @@ int main(int argc, char **argv)
   if (argc == 1)
   {
     // If no arguments print set path as current directory
-    *path = "."
+    path = ".";
   }
   else
   {
     // Set path as argument
-    *path = argv[1];
+    path = argv[1];
   }
 
   // Open directory
+  DIR *directory = opendir(path);
+  if (directory == NULL)
+  {
+    printf("no such file or directory: %s\n", path);
+    return 0;
+  }
 
   // Repeatly read and print entries
 
