@@ -15,29 +15,18 @@ int main(int argc, char **arv) {
   DIR *dir; 
   struct dirent *sd; 
   char commandline;
-  int i; 
+  
 
   while (strcmp(&commandline, "exit")!= 0)
   {
-
-      
-      
 
       // commandline = '.';
       printf("Choose a directory  . for current directory .. to go back or enter directoryName  use exit to exit \n");
       scanf("%s", &commandline);
       
-
-      if(commandline == 0)
-      {
-        printf("its null\n");
-      }
-
-
-
       if (strcmp(&commandline, "exit") == 0)
       {
-        printf("exiting"); 
+        printf("exiting\n"); 
         exit(0); 
       }
 
