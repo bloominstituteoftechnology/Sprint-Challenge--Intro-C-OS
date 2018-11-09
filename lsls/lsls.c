@@ -35,7 +35,12 @@ int main(int argc, char **argv)
     struct stat buf;
     stat(ent->d_name, &buf);
 
-    printf("%lld  %s\n", buf.st_size, ent->d_name);
+    if ((buf.st_mode & S_IFREG) != 0) {
+      printf("%lld  %s\n", buf.st_size, ent->d_name);
+    } else {
+      printf("<DIR>  %s\n", ent->d_name);
+      
+    }
   }
 
   // Close directory
