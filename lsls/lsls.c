@@ -10,10 +10,10 @@ int main(int argc, char **argv)
   struct dirent *de;  // Pointer for directory entry 
 
   // parsing from the command line
-  char* parse = argv[1];
-  // if (argc > 1) {
-  //   char* parse = argv[1];
-  // } else char* parse = ".";
+  char* parse; // = argv[1];
+  if (argc == 1) {
+    parse = ".";
+  } else parse = argv[1];
   
   
   // opendir() returns a pointer of DIR type.  
