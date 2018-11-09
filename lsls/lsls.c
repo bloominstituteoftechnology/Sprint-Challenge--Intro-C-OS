@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <dirent.h>
 #include <stdlib.h>
+#include <sys/stat.h>
 
 /**
  * Main
@@ -9,6 +10,7 @@ int main(int argc, char **argv)
 {
   struct dirent *pDirent;
   DIR *pDir;
+  struct stat sizebuf;
   // Parse command line
   if (argc < 2) {
     printf("Usage: ./lsls <directory>");
@@ -25,7 +27,8 @@ int main(int argc, char **argv)
   // Repeatly read and print entries
 
   while ((pDirent = readdir(pDir)) != NULL) {
-    printf("%s\n", pDirent->d_name);
+    stat(pDirent->d_name, &sizebuf);
+    printf("  %10ld  %s\n", sizebuf.st_size, pDirent->d_name);
   }
 
   // Close directory
