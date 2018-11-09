@@ -16,22 +16,24 @@ int main(int argc, char **argv)
   for (int i = 0; i < argc; i++) {
     if (argc == 1) {
       dir = opendir(".");
-    } else if (argc > 1) {
+    } else if (argc == 2) {
       dir = opendir(argv[1]);
+    } else {
+      fprintf(stderr, ">> usage: lsls [dirname] \n");
+      return 1;
     }
   }
 
   // Catch error
   if (dir == NULL) {
-    perror("Cannot open specified directory. \n");
+    perror(">> Cannot open specified directory. \n");
     exit(1);
   }
 
-
   // Repeatly read and print entries
-while ((dp = readdir (dir)) != NULL) {
-  printf("%s \n", dp->d_name);
-}
+  while ((dp = readdir (dir)) != NULL) {
+    printf("%s \n", dp->d_name);
+  }
 
   // Close directory
   closedir(dir);
