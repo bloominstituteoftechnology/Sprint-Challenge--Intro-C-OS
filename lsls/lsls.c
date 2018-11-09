@@ -10,20 +10,20 @@ int main(int argc, char **argv)
   DIR *directory;
   struct dirent *entry;
   // Declaring buffer with a size that the compiler can compute
-  #define BUFSIZE 1024
+  #define BUFSIZE 1024 // kilobyte (KB)
   char currentDirectory[BUFSIZE];
   
   // Parse command line
  if (argc > 1) {
-    sprintf(currentDirectory, "%s", argv[1]);
+    sprintf(currentDirectory, "%s", argv[1]); // 'sprintf' Write formatted output to sized buffer
   } else {
-    sprintf(currentDirectory, "%s", ".");
+    sprintf(currentDirectory, "%s", "."); // 'sprintf' Write formatted output to sized buffer
   }
 
   // Open directory
   if ((directory = opendir(currentDirectory)) == NULL) {
     
-    perror("The Directory can not be opened.");
+    perror("The Directory can not be opened."); // Print error
 
   }
 
@@ -47,9 +47,9 @@ int main(int argc, char **argv)
       SOURCE: http://man7.org/linux/man-pages/man3/readdir.3.html */
 
       if (entry->d_type == DT_DIR) {
-        sprintf(type, "%s", "<DIR>");
+        sprintf(type, "%s", "<DIR>"); // 'sprintf' Write formatted output to sized buffer
       } else {
-        sprintf(type, "%ld", size);
+        sprintf(type, "%ld", size); // 'sprintf' Write formatted output to sized buffer
       }
 
       printf("%6s %s\n", type, entry->d_name);
