@@ -1,0 +1,5 @@
+3 things the OS is responsible for:
+
+1. OS is responsible for provided a security buffer between 3rd party application processes and the OS and hardware.
+2. Keep track of metadata required to run each process.
+3. Switching between "simultaneous" processes running on the CPU.
