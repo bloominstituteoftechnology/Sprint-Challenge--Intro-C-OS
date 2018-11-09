@@ -2,9 +2,12 @@
  * Try running with various command line args:
  *
  * ./commandline hello world
+ // 3 cmdline args
  * ./commandline this is a test
+ // 5 cmdline args
  * ./commandline
- */
+ // 1 cmdline arg
+ */ 
 
 #include <stdio.h>
 
