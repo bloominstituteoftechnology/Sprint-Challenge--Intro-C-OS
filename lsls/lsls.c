@@ -1,18 +1,40 @@
 #include <stdio.h>
 #include <dirent.h>
+#include <stdlib.h>
+// #include <sys/stat.h>
 
 /**
  * Main
  */
+
 int main(int argc, char **argv)
 {
-  // Parse command line
+  struct dirent *pDirent;
+  DIR *pDir;
 
-  // Open directory
+  //Parse CLI
+  if (argc < 2)
+  {
+    printf("Usage: ./lsls <directory>");
+    return 1;
+  }
 
-  // Repeatly read and print entries
+  // Open Dir
+  pDir = opendir(argv[1]);
+  if (pDir == NULL)
+  {
+    printf("Cannot open directory '%s'\n", argv[1]);
+    return 1;
+  }
 
-  // Close directory
+  // Print and read entriers
 
+  while ((pDirent = readdir(pDir)) != NULL)
+  {
+    printf("%s\n", pDirent->d_name);
+  }
+
+  // Close Dir
+  closedir(pDir);
   return 0;
 }
