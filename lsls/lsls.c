@@ -5,6 +5,8 @@
 #include <string.h>
 #include <unistd.h>
 #include <sys/wait.h>
+#include <sys/stat.h>
+
 /**
  * Main
  */
@@ -13,30 +15,25 @@ int main(int argc, char **argv)
   	// Parse command line
 	int n;
         n = argc-1;
-	char *commands[10];
-	commands[0] = "ls";
- 	commands[1] = "-la";
- 	commands[2] = NULL;
+	char *c;
 
         if(n==0){               // if no arguments are provided, print out the contents of the current directory,  
-               execvp(commands[0], commands);
-	       perror("exec");
-	       exit(1); 
+		c="."; 
         }
 	else{			//if the user provides a path
-
-		 // Open directory
+		c=argv[1];
+	}
+		
+       		// Open directory
 		DIR *dir;
     		struct dirent *ent;
-
-    		char buffer[50];
-
-    		strcpy(buffer, argv[1]);    //copy the path into the buffer
-    		dir = opendir(buffer);   //Open the directory
+    		char buffer[128];
+    		strcpy(buffer, c);    		//copy the path into the buffer
+    		dir = opendir(buffer);   	//Open the directory
 		
 		
 		if (dir == NULL) {
-            		printf ("Cannot open directory '%s'. Please provide correct path and directory name.\n", argv[1]);
+            		printf("Cannot open directory '%s'. Please provide correct path and directory name.\n", argv[1]);
             		return 1;
         	}
 		else{
@@ -48,6 +45,5 @@ int main(int argc, char **argv)
 		
     		// Close directory
 		closedir(dir);	
-	}
   return 0;
 }
