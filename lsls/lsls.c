@@ -28,7 +28,11 @@ int main(int argc, char **argv)
 
   while ((pDirent = readdir(pDir)) != NULL) {
     stat(pDirent->d_name, &sizebuf);
-    printf("  %10ld  %s\n", sizebuf.st_size, pDirent->d_name);
+    if ((sizebuf.st_mode & S_IFDIR) != 0) {
+      printf("\t<DIR>  %s\n", pDirent->d_name);
+    } else {
+      printf("  %10ld  %s\n", sizebuf.st_size, pDirent->d_name);
+    }
   }
 
   // Close directory
