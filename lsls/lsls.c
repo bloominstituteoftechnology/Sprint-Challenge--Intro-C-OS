@@ -21,6 +21,12 @@ int main(int argc, char **argv)
     }
   }
 
+  // Catch error
+  if((dir = opendir(argv[1])) == NULL) {
+    perror("Cannot open specified directory. \n");
+    exit(1);
+  }
+
   // Repeatly read and print entries
 while ((dp = readdir (dir)) != NULL) {
   printf("%s \n", dp->d_name);
