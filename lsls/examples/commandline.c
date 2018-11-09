@@ -18,5 +18,7 @@ int main(int argc, char **argv)
         printf("   %s\n", argv[i]);
     }
 
+    printf("directory")
+
     return 0;
 }
