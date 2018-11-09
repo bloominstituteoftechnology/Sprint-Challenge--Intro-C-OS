@@ -52,16 +52,9 @@ int main(int argc, char **argv)
     char fullpath[9812];
 
 
-    while((de = readdir(de)) != NULL ){
+    while((de = readdir(d)) != NULL ){
       sprintf(fullpath, "%s/%s", dirname, de->d_name);
-      struct stat buf;
-
-    if (stat(fullpath, &buf) == -1) {
-      perror("stat")
-    }
-
-      printf("%s  %d\n", de->d_name);
-
+      printf("%s\n", de->d_name);
     }
 
     int closedir(DIR *de);
