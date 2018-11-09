@@ -13,6 +13,11 @@ type `make` in the `examples/` directory.) It should print `Testing: PASS`.
 
 Name at least three things that an operating system is responsible for handling?
 
+Any of the OS has three major functions:
+  *1. Manage the computer resources: CPU, memory, disk drives, printers etc..
+  *2. Establishing user interface
+  *3. Execute and provide services for applications softeware.
+
 ## Challenge 2
 
 Write a program in C, `lsls.c`, that prints out a directory listing for the
