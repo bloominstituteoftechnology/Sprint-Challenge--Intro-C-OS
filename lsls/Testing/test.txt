@@ -1,0 +1,3 @@
+The purpose of this file is to test the directory to see if I can go forward into the named directory. 
+
+Since lsls is the current directory I want to see what I can do in the forward motion. 
