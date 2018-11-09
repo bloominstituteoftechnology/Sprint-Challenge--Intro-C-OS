@@ -18,27 +18,23 @@ int main(int argc, char **argv)
   
   // opendir() returns a pointer of DIR type.  
   DIR *dr = opendir(parse); 
-  // if (argc < 2) {
-  //   printf("argc is less than 2\n");
-  //   DIR *dr = opendir(".");
-  // }
-  // else if (argc >= 2) {
-  //   printf("argc is 2 or greater\n");
-  //   DIR *dr = opendir(parse);
-  // }
 
   if (dr == NULL)  // opendir returns NULL if couldn't open directory 
   { 
       printf("Could not open directory %s\n", parse ); 
       return 0; 
   } 
+
+  char path[8000];
   struct stat buf;
 
-  while ((de = readdir(dr)) != NULL) 
-          // stat(de->d_name, &buf);
-          // printf("%10ld %s\n", buf.st_size, de->d_name); 
-          printf("%s\n", de->d_name);
-
+  while ((de = readdir(dr)) != NULL) { 
+          // sprintf(path, "%s/%s\n", parse, de->d_name);
+          stat(de->d_name, &buf);
+          printf("%10ld %s\n", buf.st_size, de->d_name); 
+          // printf("%s\n", de->d_name);
+          // printf("%s\n", path);
+  }
   // printf("%s\n", parse);
   
 
