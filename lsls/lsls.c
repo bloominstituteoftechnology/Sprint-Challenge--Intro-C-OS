@@ -14,7 +14,8 @@ int main(int argc, char **argv)
   printf("%d Command line argument(s):\n", argc);
 
   for(i = 0; i < argc; i++){
-    printf("   %s\n", argv[i]);
+    printf("$%s\n", argv[i]);
+    puts(argv[i]);
   }
   // Open directory
   DIR *d;
@@ -23,11 +24,11 @@ int main(int argc, char **argv)
   d = opendir(".");
   // Repeatly read and print entries
   if(d == NULL){
-    perror("Cannot open does not exist.\n");
+    printf("Cannot open does not exist.\n");
     exit(1);
   }
-  while ((dp = readdir (d)) != NULL){
-    printf("%s\n", dp -> d_name);
+  while ((dp = readdir(d)) != NULL){
+    printf("directory item: %s\n", dp -> d_name);
   }
   // Close directory
   closedir(d);
