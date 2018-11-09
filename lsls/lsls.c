@@ -13,16 +13,20 @@ int main(int argc, char **argv)
   	// Parse command line
 	int n;
         n = argc-1;
-	char *command="ls";
+	char *commands[10];
+	commands[0] = "ls";
+ 	commands[1] = "-la";
+ 	commands[2] = NULL;
+	char commandline[200];
 
         if(n==0){               // if no arguments are provided, print out the contents of the current directory,  
-               execlp(command, command, NULL);
+               execvp(commands[0], commands);
 	       perror("exec");
 	       exit(1); 
         }
-
+		
   	// Open directory
-
+	
   	// Repeatly read and print entries
 
   	// Close directory
