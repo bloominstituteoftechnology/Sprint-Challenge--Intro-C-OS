@@ -13,7 +13,7 @@
 int main(int argc, char **argv)
 {
   // Parse command line
-  char *dirname = argv[0];
+  char *dirname = argv[1];
   if (dirname == NULL) {
     dirname = ".";
   }
@@ -22,6 +22,8 @@ int main(int argc, char **argv)
     // Exit
     exit(0);
   }
+
+  printf("%s\n", dirname);
 
   char *exec_commands[3];
   exec_commands[0] = "ls";
