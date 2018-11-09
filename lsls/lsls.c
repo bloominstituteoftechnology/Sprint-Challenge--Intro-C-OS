@@ -23,8 +23,6 @@ int main(int argc, char **argv)
     exit(0);
   }
 
-  printf("%s\n", dirname);
-
   char *exec_commands[3];
   exec_commands[0] = "ls";
   exec_commands[1] = dirname;
@@ -45,17 +43,6 @@ int main(int argc, char **argv)
   }
   // Close directory
   closedir(dir);
-
-	// Try to fork and exec the requested process
-	pid_t pid = fork();
-
-	if (pid == 0) {
-		execvp(exec_commands[0], exec_commands);
-		perror("exec");
-		exit(1);
-	} else {
-		wait(NULL);
-	}
 
   return 0;
 }
