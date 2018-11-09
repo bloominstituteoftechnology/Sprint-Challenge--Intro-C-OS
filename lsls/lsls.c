@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <dirent.h>
-
+#include <errno.h>
 /**
 Pull Request
  * Main
@@ -12,12 +12,17 @@ int main(int argc, char **argv)
   // printf("%s\n", argv[i]);
     // }
     // printf("%s\n", name)
-
+  char *dirname;
+   if (argc == 1) {
+     dirname = ".";
+   } else if (argc == 2) {
+     dirname = argv[1];
+   }
   // Open directory 
-    DIR *directory = opendir(argv[1]); 
+    DIR *directory = opendir(dirname); 
     // struct dirent *file; {
     //   char d_name[256];
-    //   __ino_t d_ino; //idk if that's legit oooh i see. you don't need to do this, because this struct is declared in dirent.h
+    //   __ino_t d_ino; 
     // };
     struct dirent *file; 
     if (directory != NULL) {
@@ -31,7 +36,10 @@ int main(int argc, char **argv)
         
           // Close directory
           closedir(directory); 
-  }  
+  }else {
+    perror("lsls");
+    return 1;
+  }
         // 
       return 0;
 }
