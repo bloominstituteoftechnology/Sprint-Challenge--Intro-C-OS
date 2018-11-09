@@ -2,6 +2,7 @@
 #include <dirent.h>
 #include <stdlib.h>
 #include <sys/stat.h>
+#include <limits.h>
 
 /**
  * Main
@@ -21,11 +22,14 @@ int main(int argc, char **argv)
   dir = opendir(argv[1]);
 
   while((dp=readdir(dir)) != NULL){
-    stat(dp->d_name, &buf);
-    if((buf.st_mode&S_IFDIR) != 0){
-      printf("     <DIR> %s\n", dp->d_name);
-    }else{
-      printf("%10lld %s\n", buf.st_size, dp->d_name);
+    char path[PATH_MAX];
+    snprintf(path, sizeof(path), "%s/%s", argv[1], dp->d_name);
+    if(stat(path, &buf)==0){
+      if((buf.st_mode&S_IFDIR) != 0){
+        printf("     <DIR> %s\n", dp->d_name);
+      }else{
+        printf("%10lld %s\n", buf.st_size, dp->d_name);
+      }
     }
   }
 
