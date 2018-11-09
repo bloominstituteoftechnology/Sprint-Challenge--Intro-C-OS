@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <dirent.h>
+#include <stdlib.h>
 
 /**
  * Main
@@ -11,6 +12,8 @@ DIR *d;
 struct dirent *dir;
 if(argc == 1){
   printf("bruh gimme somethng to work with here \n");
+  //how you gun ask me to exit and not incldue the stdlib smdh
+  exit(1);
 } else{
   // print out the arguments
   printf("here they are all you had to do was speak on ye\n");
