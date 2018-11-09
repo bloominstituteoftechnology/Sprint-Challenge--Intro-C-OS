@@ -28,8 +28,12 @@ int main(int argc, char **argv)
   }
 
   // Repeatly read and print entries
-
+  struct dirent *entry;
+  while ((entry = readdir(directory)) != NULL)
+  {
+    printf("%s\n", entry->d_name);
+  }
   // Close directory
-
+  closedir(directory);
   return 0;
 }
