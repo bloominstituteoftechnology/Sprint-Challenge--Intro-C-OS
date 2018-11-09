@@ -7,15 +7,34 @@
 int main(int argc, char **argv)
 {
   // Parse command line
+  DIR *directory;
+
+  struct dirent *ent;
 
   // Open directory
-  opendir()
+  directory = opendir(".");
 
-      // Repeatly read and print entries
-      readdir()
+  if (argc > 1)
+  {
+    directory = opendir(argv[1]);
+  }
 
-      // Close directory
-      closedir()
+  else if (directory == NULL)
+  {
+    printf("No directory could be found\n");
+  }
 
-          return 0;
+  else
+  {
+    // Repeatly read and print entries
+    while ((ent = readdir(directory)) != NULL)
+    {
+      printf("  %s\n", ent->d_name);
+    }
+  }
+
+  // Close directory
+  closedir(directory);
+
+  return 0;
 }
