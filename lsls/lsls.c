@@ -22,7 +22,11 @@ int main(int argc, char **argv)
         strcat(subdir, ent->d_name);
         strcat(subdir,"\0");
         stat(subdir, &buf);
-        printf("%lld %s\n", buf.st_size,ent->d_name);
+        if ((buf.st_mode & S_IFDIR)!=0) {
+          printf("<DIR> %s\n",ent->d_name);
+        } else {
+          printf("%lld %s\n", buf.st_size,ent->d_name);
+        }
     }
     closedir(strm);
     } else {
@@ -38,7 +42,11 @@ int main(int argc, char **argv)
         strcat(subdir, ent->d_name);
         strcat(subdir,"\0");
         stat(subdir, &buf);
-        printf("%lld %s\n", buf.st_size,ent->d_name);
+        if ((buf.st_mode & S_IFDIR)!=0) {
+          printf("<DIR> %s\n",ent->d_name);
+        } else {
+          printf("%lld %s\n", buf.st_size,ent->d_name);
+        }
     }
     closedir(strm);
     } else {
