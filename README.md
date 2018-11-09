@@ -49,6 +49,8 @@ Downloads
 src
 ```
 
+
+
 **Hint**: Start by just printing out the contents of the current directory `.`,
 and then add the command line parsing later after you have it working.
 
@@ -78,9 +80,13 @@ the declarations for `DIR`, `struct dirent`, `opendir()`, `readdir()`, and
   _You should check for errors. If there is one, print an error message and exit
   (using the `exit()` function)._
 
+
+
 * `struct dirent *readdir(DIR *d)`: Reads the next directory entry from the
   `DIR*` returned by `opendir()`. Returns the result as a pointer to a `struct
   dirent` (see below). Returns `NULL` if there are no more directory entires.
+
+
 
 * `closedir(DIR *d)`: Close a directory (opened previously with `opendir()`)
   when you're done with it.
