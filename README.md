@@ -13,6 +13,14 @@ type `make` in the `examples/` directory.) It should print `Testing: PASS`.
 
 Name at least three things that an operating system is responsible for handling?
 
+1. Managing resources. The operating system takes care of managing the tools needed to make the computer function such as the keyboard and the screen.  
+
+2.  Running applications. The operating system is responsible for locating and loading applications into the compter's primary memory.  This week we learned the fundamentals of how operating systems can "multitask" by giving the appearance of running several programs at once.
+
+3.  Controlling hardware.  Most compter programs rely on the physical computer hardware.  Any program using hardware will go through the operating system which can be access through the basic input output system or device drivers. 
+
+4.  Providing a User Interface. Another role played by operating systems is that of generating graphical user interface.  This is essentially the translation between the operations going on behind the scenes and the users method of accessing them.  Developers build GUI's with click and scroll operations to make it easier for the user to accomplish tasks on their computers. 
+
 ## Challenge 2
 
 Write a program in C, `lsls.c`, that prints out a directory listing for the
