@@ -13,17 +13,22 @@ int main(int argc, char **argv)
   struct dirent *dp;
   char *file_name;
   struct stat buf;
+  char *list_path;
 
-  if(argc != 2){
+  if(argc == 1){
+    list_path = ".";
+  }else if(argc == 2){
+    list_path = argv[1];
+  }else{
     fprintf(stderr, "\nUsage: ./lsls <PATH>\n\n");
     exit(1);
   }
 
-  dir = opendir(argv[1]);
+  dir = opendir(list_path);
 
   while((dp=readdir(dir)) != NULL){
     char path[PATH_MAX];
-    snprintf(path, sizeof(path), "%s/%s", argv[1], dp->d_name);
+    snprintf(path, sizeof(path), "%s/%s", list_path, dp->d_name);
     if(stat(path, &buf)==0){
       if((buf.st_mode&S_IFDIR) != 0){
         printf("     <DIR> %s\n", dp->d_name);
