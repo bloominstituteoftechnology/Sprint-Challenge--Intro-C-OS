@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <dirent.h>
 #include <sys/stat.h>
+#include <sys/types.h>
 
 /**
  * Main
@@ -34,7 +35,14 @@ int main(int argc, char **argv)
   while (entry = readdir(directory))
   {
     stat(entry->d_name, &buf);
-    printf("%10ld   %s\n", buf.st_size, entry->d_name);
+    if(S_ISDIR(buf.st_mode))
+    {
+      printf("      <DIR>   %s\n", entry->d_name);
+    }
+    else
+    {
+      printf("%10ld   %s\n", buf.st_size, entry->d_name);
+    }
   }
   // Close directory
   closedir(directory);
