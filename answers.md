@@ -1,0 +1,1 @@
+An operating system is responsible for managing users, managing processes, managing file store and allocating memory.
