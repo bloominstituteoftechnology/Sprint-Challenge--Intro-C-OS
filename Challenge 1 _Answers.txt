@@ -1,0 +1,7 @@
+
+##Question:
+Name at least three things that an operating system is responsible for handling.
+##Answers:
+ - [x] Loading programs into memory and executing them.
+ - [x] Interfacing with IO and other hardware through the use of drivers and handling user Interrupts and commands.
+ - [x] Handling multitasking or simultaneously running programs by allowing each to have a slice of time to process.
