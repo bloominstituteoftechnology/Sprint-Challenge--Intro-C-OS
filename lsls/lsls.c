@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <sys/stat.h>
 #include <dirent.h>
 
 /**
@@ -7,6 +8,7 @@
 int main(int argc, char **argv)
 {
     int i;
+    struct stat foldersize;
     struct dirent *pDirent;
     DIR *pDir;
 
@@ -23,11 +25,12 @@ int main(int argc, char **argv)
 
     pDir = opendir(argv[1]);
     if (pDir == NULL){
-        printf("Cannot open directory %s\n", argv[1]);
-        return 0;
+      printf("Cannot open directory %s\n", argv[1]);
+      return 0;
     }
     while ((pDirent = readdir(pDir)) != NULL){
-        printf("%s\n", pDirent -> d_name);
+      stat(pDirent -> d_name, &foldersize);
+      printf("  %10ld   %s\n", foldersize.st_size, pDirent -> d_name);
     }
     closedir(pDir);
     
