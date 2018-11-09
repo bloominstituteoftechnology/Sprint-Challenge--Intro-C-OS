@@ -12,7 +12,7 @@ type `make` in the `examples/` directory.) It should print `Testing: PASS`.
 ## Challenge 1
 
 Name at least three things that an operating system is responsible for handling?
-
+Memory management , process management , execute 
 ## Challenge 2
 
 Write a program in C, `lsls.c`, that prints out a directory listing for the
