@@ -1,4 +1,4 @@
-# Sprint-Challenge: Intro to C and Operating Systems
+#   Sprint-Challenge: Intro to C and Operating Systems
 
 Complete both challenges, below.
 
@@ -12,6 +12,10 @@ type `make` in the `examples/` directory.) It should print `Testing: PASS`.
 ## Challenge 1
 
 Name at least three things that an operating system is responsible for handling?
+
+a)An operating system is responsible for managing the computer's hardware and software resources like (CPU) central processing unit, memory, disk drives and printers.
+b)It establishes a user interface and provides a stable and consistent way for applications to talk to the hardware via device drivers without having to know all the details of the hardware.
+c)It executes and provides services for applications software. 
 
 ## Challenge 2
 
