@@ -15,19 +15,15 @@ int main(int argc, char **arv) {
   DIR *dir; 
   struct dirent *sd; 
   char commandline;
-  char buff[FILENAME_MAX];
   int i; 
 
   while (strcmp(&commandline, "exit")!= 0)
   {
 
-      getcwd(buff, FILENAME_MAX); //gets the current working directory 
+      
       
 
       // commandline = '.';
-
-      
-      printf("Current working dir: %s\n", buff);
       printf("Choose a directory  . for current directory .. to go back or enter directoryName  use exit to exit \n");
       scanf("%s", &commandline);
       
