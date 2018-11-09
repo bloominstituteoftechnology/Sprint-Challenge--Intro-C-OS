@@ -19,17 +19,21 @@ int main(int argc, char **argv)
     // }
 
     if (argc < 2) {
-        printf("Usage: ./lsls <directory>\n");
-    return 1;
+        pDir = opendir(".");
     }
-
-    pDir = opendir(argv[1]);
+    else {
+      pDir = opendir(argv[1]);
+    }
+  
     if (pDir == NULL){
       printf("Cannot open directory %s\n", argv[1]);
       return 0;
     }
     while ((pDirent = readdir(pDir)) != NULL){
       stat(pDirent -> d_name, &foldersize);
+      if ((foldersize.st_mode & S_IFDIR) != 0){
+        printf("<DIR> %s\n", pDirent -> d_name);
+      }
       printf("  %10ld   %s\n", foldersize.st_size, pDirent -> d_name);
     }
     closedir(pDir);
