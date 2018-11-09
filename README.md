@@ -13,6 +13,10 @@ type `make` in the `examples/` directory.) It should print `Testing: PASS`.
 
 Name at least three things that an operating system is responsible for handling?
 
+1. Provides an interface that allows the user to interact with connected hardware
+2. Handles the inputs and outputs of computer resources like the the disk drive, cpu, and memory
+3. provides services that help various applications run simultaneously
+
 ## Challenge 2
 
 Write a program in C, `lsls.c`, that prints out a directory listing for the
