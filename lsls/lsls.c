@@ -8,18 +8,35 @@
 // /**
 //  * Main
 //  */
-// int main(int argc, char **argv)
-// {
-//   // Parse command line
 
-//   // Open directory
 
-//   // Repeatly read and print entries
+int main(int argc, char **argv)
+{
+    DIR *ptr;
+    struct dirent *directory;
 
-//   // Close directory
+    //Open Directory
+    if (argc == 1){
+      ptr = opendir(".");
+    }
+    else{
+      ptr = opendir(argv[1]);
+    }
 
-//   return 0;
-// }
+    if (ptr == NULL){
+      printf("Cannot open %s\n", argv[1]);
+      return 1;
+    }
+
+    //repeatedly read and print entries
+    while ((directory = readdir(ptr)) != NULL){
+      printf("%s\n", directory -> d_name);
+    }
+
+    //close directory
+    closedir(ptr);
+  return 0;
+}
 
 
 // int main(void)
@@ -41,29 +58,31 @@
 //     return 0;
 // }
 
-// another verion try entering / at the prompt
-int main()
-{
-      char directory_name[10];
-      DIR *ptr;
-      struct dirent *directory;
+// // another verion try entering / at the prompt
+// int main()
+// {
 
-      // Parse Command Line
-      printf("Enter Directory Name:\t");
-      scanf("%s", directory_name);
+//       char directory_name[10];
+//       DIR *ptr;
+//       struct dirent *directory;
+
+//       // Parse Command Line
+//       printf("Enter Directory Name:\t");
+//       scanf("%s", directory_name);
       
-      // Open Directory
-      ptr = opendir(directory_name);
-      printf("\nDirectory %s\n", directory_name);
+//       // Open Directory
+//       ptr = opendir(directory_name);
+//       printf("\nDirectory %s\n", directory_name);
 
-      //repeatedly read and print entries
-      while((directory = readdir(ptr)) != NULL)
-      {
-            printf("%s\n", directory->d_name);
-      }
+//       //repeatedly read and print entries
+//       while((directory = readdir(ptr)) != NULL)
+//       {
+//             printf("%s\n", directory->d_name);
+//       }
 
-      //close directory
-      closedir(ptr);
+//       //close directory
+//       closedir(ptr);
 
-      return 0;
-}
+//       return 0;
+// }
+
