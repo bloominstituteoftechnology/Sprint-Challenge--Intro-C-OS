@@ -1,11 +1,12 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <dirent.h>
 #include <sys/stat.h>
 
 /**
  * Main
  */
-int main(int argc, char **argv)
+int main(int argc, char **argv) //equivilent to *argv[]
 {
   // int i;
   // printf("%i\n", argc);
@@ -30,18 +31,19 @@ int main(int argc, char **argv)
   folder = opendir (argv[1]);
   if (folder == NULL) {
       printf ("Cannot open directory '%s'\n", argv[1]);
-      // exit();
-      return 1;
+      exit(1);
+      // return 1;
   }
 
   while ((entries = readdir(folder)) != NULL) {
       printf ("[%s]\n", entries->d_name);//rough equivilent of dot notation essentially
-      int stat(char * argv, struct stat *buf);
+
+      // int stat(char * argv, struct stat *buf);
       struct stat buf;
 
-      stat("./lsls.c", &buf);
+      stat(entries->d_name, &buf);
 
-      printf("file size is %10lld\n", buf.st_size);
+      printf("file size is %10ld\n", buf.st_size);
   }
   closedir (folder);
   return 0;
