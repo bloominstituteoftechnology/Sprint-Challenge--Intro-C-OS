@@ -48,15 +48,22 @@ int main()
       DIR *ptr;
       struct dirent *directory;
 
+      // Parse Command Line
       printf("Enter Directory Name:\t");
       scanf("%s", directory_name);
+      
+      // Open Directory
       ptr = opendir(directory_name);
       printf("\nDirectory %s\n", directory_name);
-      
+
+      //repeatedly read and print entries
       while((directory = readdir(ptr)) != NULL)
       {
             printf("%s\n", directory->d_name);
       }
-      
+
+      //close directory
       closedir(ptr);
+
+      return 0;
 }
