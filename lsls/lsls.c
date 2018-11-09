@@ -27,6 +27,7 @@ d = opendir(argv[1]);
 if(d){
     // Repeatly read and print entries
   while((dir = readdir(d)) != NULL){
+    //you should print the field `d_name` from your `struct dirent *`
     printf("%s\n", dir->d_name);
   }
     // Close directory
