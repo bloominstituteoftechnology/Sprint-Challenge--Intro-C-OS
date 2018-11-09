@@ -7,18 +7,23 @@
 int main(int argc, char **argv)
 {
   int i;
-  printf("%s\n", argv[1]);
-  printf("There are %d command line argument(s):\n", argc-1);
+  // printf("%i\n", argc);
+  // printf("%s\n", argv[0]);
+  // printf("There are %d command line argument(s):\n", argc-1);
 
-  for (i = 1; i < argc; i++) {
-      printf("   %s\n", argv[i]);
-  }
+  // for (i = 1; i < argc; i++) {
+  //     printf("   %s\n", argv[i]);
+  // }
   
   struct dirent *entries;
   DIR *folder;
 
   if (argc < 2) {
-      printf ("Usage: testprog <dirname>\ninclude folder to open or '.'.");
+      // printf ("Usage: testprog <dirname>\ninclude folder to open or '.'.");
+      folder = opendir (".");
+      while ((entries = readdir(folder)) != NULL) {
+          printf ("[%s]\n", entries->d_name);
+      } 
       return 1;
   }
     
