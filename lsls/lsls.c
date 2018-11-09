@@ -10,6 +10,7 @@ int main(int argc, char **argv)
 {
   // Parse command line
   int i;
+  char *dirname;
 
   printf("%d Command line argument(s):\n", argc);
 
@@ -26,6 +27,11 @@ int main(int argc, char **argv)
   if(d == NULL){
     printf("Cannot open does not exist.\n");
     exit(1);
+  }
+  if(argc == 1){
+    dirname = ".";
+  } else if( argc == 2 ){
+    dirname = argv[1];
   }
   while ((dp = readdir(d)) != '\0'){
     printf("directory item: %s\n", dp -> d_name);
