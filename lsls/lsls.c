@@ -14,7 +14,7 @@ int main(int argc, char **argv)
   struct stat buf;
 
   if(argc != 2){
-    fprintf(stderr, "Usage: ./lsls <PATH>\n");
+    fprintf(stderr, "\nUsage: ./lsls <PATH>\n\n");
     exit(1);
   }
 
