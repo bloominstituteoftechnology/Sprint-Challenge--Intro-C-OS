@@ -24,24 +24,13 @@ int main(int argc, char **argv)
   if (directory == NULL) 
   {
     printf("Cannot open directory.");
-    exit(0);
+    exit(1);
   }
 
-  ent = readdir(directory);
-  // pid_t pid = fork();
-
-  // if (pid == 0) {
-  //   printf("%s\n", ent->d_name);
-  //   exit(1);
-  // } else {
-  //   wait(NULL);
-  // }
-
-  while (ent != NULL)
+  while ((ent = readdir(directory)) != NULL)
   {
-    printf("%scheck\n", ent->d_name);
+    printf("%s\n", ent->d_name);
   }
-
 
   closedir(directory);
   return 0;
