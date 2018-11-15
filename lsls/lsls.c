@@ -17,14 +17,16 @@ int main(int argc, char **argv)
   DIR *pDir = opendir (argv[1]);
   struct dirent *pDirent;
 
-  // Repeatly read and print entries
-  if (argc < 2) {
+ if (argc < 2) {
     pDir = opendir(".");
   }
   if (pDir == NULL){
     printf("invalid directory: %s\n", argv[1]);
     return 1;
   }
+
+  // Repeatly read and print entries
+ 
 
   while ((pDirent = readdir(pDir)) != NULL) {
             printf ("[%s]\n", pDirent->d_name);
