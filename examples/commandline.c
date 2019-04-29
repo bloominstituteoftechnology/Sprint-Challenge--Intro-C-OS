@@ -14,6 +14,7 @@ int main(int argc, char **argv)
 
     printf("There are %d command line argument(s):\n", argc);
 
+    // Looks like this loops in somewhere...
     for (i = 0; i < argc; i++) {
         printf("   %s\n", argv[i]);
     }
